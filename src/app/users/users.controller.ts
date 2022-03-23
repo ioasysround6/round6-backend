@@ -16,67 +16,75 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
-import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
-import { verifyTokenId } from 'src/helpers/function.helper';
+import { checkTokenId } from 'src/helpers/function.helper';
+import { UpdatePasswordDto } from './dto/update-password.dto';
 
 @Controller('api/users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
+  @Get()
+  async findAllUsers() {
+    return await this.userService.findAllUsers();
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  async getProfile(@Param('id') id: string, @Req() req: any) {
+  async getProfile(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Req() req: any,
+  ) {
     const user = await this.userService.getProfile({ id });
-    verifyTokenId(req.user, user);
+    checkTokenId(req.user, user);
     return user;
   }
 
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
-  async createProfile(@Body() body: CreateUserDto) {
-    return await this.userService.createUser(body);
+  async createUserAccount(@Body() body: CreateUserDto) {
+    return await this.userService.createUserAccount(body);
   }
 
   @UseGuards(JwtAuthGuard)
   @Post('register/admin')
   @HttpCode(HttpStatus.CREATED)
-  async createAdmin(@Body() body: CreateUserDto) {
-    return await this.userService.createAdmin(body);
+  async createAdminAccount(@Body() body: CreateUserDto) {
+    return await this.userService.createAdminAccount(body);
   }
 
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  async updateProfile(
+  async updateAccount(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateUserDto,
     @Req() req: any,
   ) {
     const user = await this.userService.getProfile({ id });
-    verifyTokenId(req.user, user);
-    return await this.userService.updateUser(id, body);
+    checkTokenId(req.user, user);
+    return await this.userService.updateAccount(id, body);
   }
 
   @UseGuards(JwtAuthGuard)
   @Patch('password/:id')
-  async updateUserPassword(
+  async recoverPassword(
     @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() body: UpdateUserPasswordDto,
+    @Body() body: UpdatePasswordDto,
     @Req() req: any,
   ) {
     const user = await this.userService.getProfile({ id });
-    verifyTokenId(req.user, user);
-    return await this.userService.updateUserPassword(id, body);
+    checkTokenId(req.user, user);
+    return await this.userService.recoverPassword(id, body);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async adminDeleteUser(
+  async deleteAccount(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Req() req: any,
   ) {
     const user = await this.userService.getProfile({ id });
-    verifyTokenId(req.user, user);
-    await this.userService.deleteUser(id);
+    checkTokenId(req.user, user);
+    await this.userService.deleteAccount(id);
   }
 }

@@ -2,11 +2,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
-import { verifyDuplicate } from 'src/helpers/function.helper';
+import { checkDuplicate } from 'src/helpers/function.helper';
 import { MessageHelper } from 'src/helpers/message.helper';
-import { FindConditions, FindOneOptions, Repository } from 'typeorm';
+import {
+  createQueryBuilder,
+  FindConditions,
+  FindOneOptions,
+  Repository,
+} from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
+import { UpdatePasswordDto } from './dto/update-password.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersEntity } from './users.entity';
 
@@ -17,11 +22,42 @@ export class UsersService {
     private readonly userRepository: Repository<UsersEntity>,
   ) {}
 
+  async findAllUsers() {
+    return await createQueryBuilder(UsersEntity, 'users')
+      //.leftJoinAndSelect('customers.orders', 'orders')
+      //.leftJoinAndSelect('orders.vehicles', 'vehicles')
+      .select([
+        'users.id',
+        'users.fullName',
+        /* 'orders.id',
+        'orders.payment',
+        'orders.totalQuantity',
+        'vehicles.id',
+        'vehicles.brand',
+        'vehicles.model', */
+      ])
+      .getMany();
+  }
+
   async getProfile(conditions: FindConditions<UsersEntity>) {
     try {
-      return await this.userRepository.findOneOrFail(conditions, {
-        select: ['id', 'fullName', 'email', 'role'],
-      });
+      return await createQueryBuilder(UsersEntity, 'users')
+        //.leftJoinAndSelect('users.orders', 'orders')
+        //.leftJoinAndSelect('orders.vehicles', 'vehicles')
+        .select([
+          'users.id',
+          'users.fullName',
+          'users.email',
+          'users.role',
+          /* 'orders.id',
+          'orders.payment',
+          'orders.totalQuantity',
+          'vehicles.id',
+          'vehicles.brand',
+          'vehicles.model', */
+        ])
+        .where(conditions)
+        .getOne();
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
@@ -38,39 +74,37 @@ export class UsersService {
     }
   }
 
-  async createUser(data: CreateUserDto) {
+  async createUserAccount(data: CreateUserDto) {
     const { email } = data;
-    const verifyUser = await this.userRepository.findOne({
-      email,
-    });
-
-    verifyDuplicate(verifyUser);
-
+    const verifyUser = await this.userRepository.findOne({ email });
+    checkDuplicate(verifyUser);
     const user = this.userRepository.create(data);
+    user.password = hashSync(user.password, 10);
     const savedUser = await this.userRepository.save(user);
     savedUser.password = undefined;
     return savedUser;
   }
 
-  async createAdmin(data: CreateUserDto) {
+  async createAdminAccount(data: CreateUserDto) {
     const { email } = data;
-    const verifyAdmin = await this.userRepository.findOne({
-      email,
-    });
-
-    verifyDuplicate(verifyAdmin);
-
-    const admin: UsersEntity = this.userRepository.create(data);
+    const verifyAdmin = await this.userRepository.findOne({ email });
+    checkDuplicate(verifyAdmin);
+    const admin = this.userRepository.create(data);
+    admin.password = hashSync(admin.password, 10);
     admin.role = Role.Admin;
     const savedAdmin = await this.userRepository.save(admin);
     savedAdmin.password = undefined;
     return savedAdmin;
   }
 
-  async updateUser(id: string, data: UpdateUserDto) {
+  async updateAccount(id: string, data: UpdateUserDto) {
     try {
       const user = await this.userRepository.findOneOrFail({ id });
+      const userOldPassword = user.password;
       this.userRepository.merge(user, data);
+      if (userOldPassword !== user.password) {
+        user.password = hashSync(user.password, 10);
+      }
       const updatedUser = await this.userRepository.save(user);
       updatedUser.password = undefined;
       return updatedUser;
@@ -79,7 +113,7 @@ export class UsersService {
     }
   }
 
-  async updateUserPassword(id: string, data: UpdateUserPasswordDto) {
+  async recoverPassword(id: string, data: UpdatePasswordDto) {
     try {
       const user = await this.userRepository.findOneOrFail({ id });
       const password = hashSync(data.password, 10);
@@ -88,15 +122,15 @@ export class UsersService {
         password,
       };
       this.userRepository.merge(user, data);
-      const updatedUserPassword = await this.userRepository.save(user);
-      updatedUserPassword.password = undefined;
-      return updatedUserPassword;
+      const updatedPassword = await this.userRepository.save(user);
+      updatedPassword.password = undefined;
+      return updatedPassword;
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
   }
 
-  async deleteUser(id: string) {
+  async deleteAccount(id: string) {
     try {
       await this.userRepository.findOneOrFail({ id });
       this.userRepository.softDelete({ id });
