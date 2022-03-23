@@ -18,7 +18,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 import { checkTokenId } from 'src/helpers/function.helper';
 import { UpdatePasswordDto } from './dto/update-password.dto';
+import { SkipThrottle } from '@nestjs/throttler';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Roles } from 'src/auth/decorator/role.decorator';
+import { Role } from 'src/config/enum/role.enum';
 
+@SkipThrottle(true)
 @Controller('api/users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
@@ -28,7 +33,8 @@ export class UsersController {
     return await this.userService.findAllUsers();
   }
 
-  @UseGuards(JwtAuthGuard)
+  @Roles(Role.Admin, Role.Tourist)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
   async getProfile(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -39,20 +45,24 @@ export class UsersController {
     return user;
   }
 
+  @SkipThrottle(false)
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
   async createUserAccount(@Body() body: CreateUserDto) {
     return await this.userService.createUserAccount(body);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Post('register/admin')
+  @SkipThrottle(false)
+  @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Post('admin/register')
   @HttpCode(HttpStatus.CREATED)
   async createAdminAccount(@Body() body: CreateUserDto) {
     return await this.userService.createAdminAccount(body);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @Roles(Role.Admin, Role.Tourist)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
   async updateAccount(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -64,7 +74,8 @@ export class UsersController {
     return await this.userService.updateAccount(id, body);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @Roles(Role.Admin, Role.Tourist)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch('password/:id')
   async recoverPassword(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -76,7 +87,8 @@ export class UsersController {
     return await this.userService.recoverPassword(id, body);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @Roles(Role.Admin, Role.Tourist)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteAccount(
