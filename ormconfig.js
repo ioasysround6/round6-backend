@@ -5,12 +5,13 @@ module.exports = {
   url: process.env.DATABASE_URL,
   synchronize: false,
   logging: false,
-  ssl: true,
-  extra: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  },
+  ssl: process.env.NODE_ENV === 'production' ? true : false,
+  extra:
+    process.env.NODE_ENV === 'production'
+      ? {
+          ssl: { rejectUnauthorized: false },
+        }
+      : null,
   entities: [process.env.ENTITIES],
   migrations: [process.env.MIGRATIONS],
   cli: {
