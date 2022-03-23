@@ -18,6 +18,13 @@ import { APP_GUARD /* APP_INTERCEPTOR */ } from '@nestjs/core';
       url: process.env.DATABASE_URL,
       synchronize: false,
       logging: false,
+      ssl: process.env.NODE_ENV === 'production' ? true : false,
+      extra:
+        process.env.NODE_ENV === 'production'
+          ? {
+              ssl: { rejectUnauthorized: false },
+            }
+          : null,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
     } as TypeOrmModuleOptions),
     ThrottlerModule.forRoot({
