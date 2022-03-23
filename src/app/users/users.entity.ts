@@ -31,7 +31,7 @@ export class UsersEntity {
   @Column({ length: '255', nullable: true })
   gender: string;
 
-  @Column({ type: 'enum', enum: Role, default: Role.User })
+  @Column({ type: 'enum', enum: Role, default: Role.Tourist })
   role: Role;
 
   @CreateDateColumn({ name: 'created_at' })
