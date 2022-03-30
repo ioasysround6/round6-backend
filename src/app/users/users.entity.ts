@@ -14,7 +14,10 @@ export class UsersEntity {
   id: string;
 
   @Column({ name: 'full_name', length: '255' })
-  fullName: string;
+  firstName: string;
+
+  @Column({ name: 'last_name', length: '255' })
+  lastName: string;
 
   @Column({ length: '255', unique: true })
   email: string;
@@ -22,14 +25,8 @@ export class UsersEntity {
   @Column({ length: '255' })
   password: string;
 
-  @Column({ length: '255', unique: true })
-  cpf: string;
-
-  @Column({ length: '255' })
-  telephone: string;
-
-  @Column({ length: '255', nullable: true })
-  gender: string;
+  @Column({ name: 'birth_date' })
+  birthDate: Date;
 
   @Column({ type: 'enum', enum: Role, default: Role.Tourist })
   role: Role;

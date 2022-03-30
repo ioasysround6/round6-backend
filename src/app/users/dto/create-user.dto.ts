@@ -4,7 +4,7 @@ import {
   Matches,
   MinLength,
   MaxLength,
-  IsOptional,
+  IsDate,
 } from 'class-validator';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
@@ -12,7 +12,11 @@ import { RegExHelper } from 'src/helpers/regex.helper';
 export class CreateUserDto {
   @IsNotEmpty()
   @Matches(RegExHelper.name, { message: MessageHelper.FULL_NAME_VALID })
-  fullName: string;
+  firstName: string;
+
+  @IsNotEmpty()
+  @Matches(RegExHelper.name, { message: MessageHelper.FULL_NAME_VALID })
+  lastName: string;
 
   @IsNotEmpty()
   @IsEmail()
@@ -25,13 +29,6 @@ export class CreateUserDto {
   password: string;
 
   @IsNotEmpty()
-  @Matches(RegExHelper.cpf, { message: MessageHelper.CPF_VALID })
-  cpf: string;
-
-  @IsNotEmpty()
-  @Matches(RegExHelper.telephone, { message: MessageHelper.TELEPHONE_VALID })
-  telephone: string;
-
-  @IsOptional()
-  gender: string;
+  @IsDate()
+  birthDate: Date;
 }

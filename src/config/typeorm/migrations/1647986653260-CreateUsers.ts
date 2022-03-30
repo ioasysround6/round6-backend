@@ -6,12 +6,11 @@ export class CreateUsers1647986653260 implements MigrationInterface {
         CREATE TYPE role_options AS ENUM ('tourist', 'admin');
         CREATE TABLE users (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        full_name varchar(255) NOT NULL,
+        first_name varchar(255) NOT NULL,
+        last_name varchar(255) NOT NULL,
         email varchar(255) NOT NULL UNIQUE,
         password varchar(255) NOT NULL,
-        cpf varchar(255) NOT NULL UNIQUE,
-        telephone varchar(255) NOT NULL,
-        gender varchar(255),
+        birth_date date NOT NULL,
         role role_options DEFAULT 'tourist',
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,

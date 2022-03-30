@@ -28,7 +28,8 @@ export class UsersService {
       //.leftJoinAndSelect('orders.vehicles', 'vehicles')
       .select([
         'users.id',
-        'users.fullName',
+        'users.firstName',
+        'users.lastName',
         /* 'orders.id',
         'orders.payment',
         'orders.totalQuantity',
@@ -46,7 +47,8 @@ export class UsersService {
         //.leftJoinAndSelect('orders.vehicles', 'vehicles')
         .select([
           'users.id',
-          'users.fullName',
+          'users.firstName',
+          'users.lastName',
           'users.email',
           'users.role',
           /* 'orders.id',
