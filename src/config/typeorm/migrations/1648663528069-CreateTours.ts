@@ -7,7 +7,7 @@ export class CreateTours1648663528069 implements MigrationInterface {
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name varchar(255) NOT NULL,
         description text NOT NULL,
-        price decima(10, 2) NOT NULL,
+        price decimal(10, 2) NOT NULL,
         photo varchar,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
