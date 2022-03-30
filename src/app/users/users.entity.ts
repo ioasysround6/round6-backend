@@ -15,7 +15,7 @@ export class UsersEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'full_name', length: '255' })
+  @Column({ name: 'first_name', length: '255' })
   firstName: string;
 
   @Column({ name: 'last_name', length: '255' })
