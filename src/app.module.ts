@@ -8,7 +8,7 @@ import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { WinstonModule } from 'nest-winston';
 import { winstonTransport } from './config/transports/winston.transport';
 import { LoggerInterceptor } from './config/interceptors/logger.interceptor';
-//import { OrdersModule } from './app/orders/orders.module';
+import { OrdersModule } from './app/orders/orders.module';
 import { ToursModule } from './app/tours/tours.module';
 //import { CommentsModule } from './app/comments/comments.module';
 
@@ -36,7 +36,7 @@ import { ToursModule } from './app/tours/tours.module';
     }),
     UsersModule,
     AuthModule,
-    //OrdersModule,
+    OrdersModule,
     ToursModule,
     //CommentsModule,
   ],

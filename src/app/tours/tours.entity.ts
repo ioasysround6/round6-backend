@@ -3,9 +3,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { OrdersEntity } from '../orders/orders.entity';
 
 @Entity({ name: 'tours' })
 export class ToursEntity {
@@ -23,6 +25,9 @@ export class ToursEntity {
 
   @Column()
   photo: string;
+
+  @OneToMany(() => OrdersEntity, (orders) => orders.tour)
+  orders: OrdersEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

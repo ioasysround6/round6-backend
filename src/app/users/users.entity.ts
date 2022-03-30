@@ -3,10 +3,12 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Role } from '../../config/enum/role.enum';
+import { OrdersEntity } from '../orders/orders.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -30,6 +32,9 @@ export class UsersEntity {
 
   @Column({ type: 'enum', enum: Role, default: Role.Tourist })
   role: Role;
+
+  @OneToMany(() => OrdersEntity, (orders) => orders.user)
+  orders: OrdersEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
