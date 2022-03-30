@@ -15,12 +15,11 @@ export class CreateAdmin implements Seeder {
       .into(UsersEntity)
       .values([
         {
-          fullName: process.env.ADMIN_FULL_NAME,
+          firstName: process.env.ADMIN_FIRST_NAME,
+          lastName: process.env.ADMIN_LAST_NAME,
           email: process.env.ADMIN_EMAIL,
           password: `${hashedPassword}`,
-          cpf: process.env.ADMIN_CPF,
-          telephone: process.env.ADMIN_TELEPHONE,
-          gender: process.env.ADMIN_GENDER,
+          birthDate: process.env.ADMIN_BIRTH_DATE,
           role: Role.Admin,
         },
       ])
