@@ -28,7 +28,7 @@ export class UsersEntity {
   password: string;
 
   @Column({ name: 'birth_date' })
-  birthDate: Date;
+  birthDate: string;
 
   @Column({ type: 'enum', enum: Role, default: Role.Tourist })
   role: Role;

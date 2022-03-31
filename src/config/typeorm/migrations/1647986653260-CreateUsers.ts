@@ -10,7 +10,7 @@ export class CreateUsers1647986653260 implements MigrationInterface {
         last_name varchar(255) NOT NULL,
         email varchar(255) NOT NULL UNIQUE,
         password varchar(255) NOT NULL,
-        birth_date date NOT NULL,
+        birth_date varchar(10) NOT NULL,
         role role_options DEFAULT 'tourist',
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,

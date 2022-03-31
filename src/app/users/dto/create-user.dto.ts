@@ -4,7 +4,6 @@ import {
   Matches,
   MinLength,
   MaxLength,
-  IsDate,
 } from 'class-validator';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
@@ -29,6 +28,5 @@ export class CreateUserDto {
   password: string;
 
   @IsNotEmpty()
-  @IsDate()
-  birthDate: Date;
+  birthDate: string;
 }
