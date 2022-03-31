@@ -7,11 +7,32 @@ export class CreateTourDto {
 
   @IsNotEmpty()
   @IsString()
-  description: string;
+  longDescription: string;
+
+  @IsNotEmpty()
+  @IsString()
+  shortDescription: string;
+
+  @IsNotEmpty()
+  @IsString()
+  accommodation: string;
+
+  @IsNotEmpty()
+  @IsString()
+  activity: string;
+
+  @IsNotEmpty()
+  @IsString()
+  date: string;
+
+  @IsNotEmpty()
+  @IsString()
+  hint: string;
 
   @IsNotEmpty()
   @IsNumber()
   price: number;
 
+  @IsString()
   photo: string;
 }

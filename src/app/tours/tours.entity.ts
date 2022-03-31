@@ -17,13 +17,28 @@ export class ToursEntity {
   @Column({ length: '255' })
   name: string;
 
-  @Column()
-  description: string;
+  @Column({ name: 'long_description' })
+  longDescription: string;
+
+  @Column({ name: 'short_description' })
+  shortDescription: string;
+
+  @Column({ length: '255' })
+  accommodation: string;
+
+  @Column({ length: '255' })
+  activity: string;
+
+  @Column({ length: '100' })
+  date: string;
+
+  @Column({ length: '255' })
+  hint: string;
 
   @Column()
   price: number;
 
-  @Column()
+  @Column({ length: '255' })
   photo: string;
 
   @OneToMany(() => OrdersEntity, (orders) => orders.tour)
