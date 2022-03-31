@@ -46,7 +46,7 @@ export class ToursService {
           'tours.id',
           'tours.name',
           'tours.longDescription',
-          'tours.accommdation',
+          'tours.accommodation',
           'tours.activity',
           'tours.date',
           'tours.hint',
