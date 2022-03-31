@@ -14,14 +14,11 @@ export class ToursEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: '255' })
-  name: string;
+  @Column({ name: 'community_name', length: '255' })
+  communityName: string;
 
-  @Column({ name: 'long_description' })
-  longDescription: string;
-
-  @Column({ name: 'short_description' })
-  shortDescription: string;
+  @Column()
+  description: string;
 
   @Column({ length: '255' })
   accommodation: string;
@@ -29,8 +26,8 @@ export class ToursEntity {
   @Column({ length: '255' })
   activity: string;
 
-  @Column({ length: '100' })
-  date: string;
+  @Column({ name: 'travel_date', length: '100' })
+  travelDate: string;
 
   @Column({ length: '255' })
   hint: string;
@@ -38,8 +35,17 @@ export class ToursEntity {
   @Column()
   price: number;
 
+  @Column()
+  vacancies: number;
+
   @Column({ length: '255' })
-  photo: string;
+  photo1: string;
+
+  @Column({ length: '255' })
+  photo2: string;
+
+  @Column({ length: '255' })
+  photo3: string;
 
   @OneToMany(() => OrdersEntity, (orders) => orders.tour)
   orders: OrdersEntity[];

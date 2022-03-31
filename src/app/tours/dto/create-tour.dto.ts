@@ -3,15 +3,11 @@ import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class CreateTourDto {
   @IsNotEmpty()
   @IsString()
-  name: string;
+  communityName: string;
 
   @IsNotEmpty()
   @IsString()
-  longDescription: string;
-
-  @IsNotEmpty()
-  @IsString()
-  shortDescription: string;
+  description: string;
 
   @IsNotEmpty()
   @IsString()
@@ -23,7 +19,7 @@ export class CreateTourDto {
 
   @IsNotEmpty()
   @IsString()
-  date: string;
+  travelDate: string;
 
   @IsNotEmpty()
   @IsString()
@@ -33,6 +29,16 @@ export class CreateTourDto {
   @IsNumber()
   price: number;
 
+  @IsNotEmpty()
+  @IsNumber()
+  vacancies: number;
+
   @IsString()
-  photo: string;
+  photo1: string;
+
+  @IsString()
+  photo2: string;
+
+  @IsString()
+  photo3: string;
 }
