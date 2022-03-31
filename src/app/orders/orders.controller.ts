@@ -50,7 +50,7 @@ export class OrdersController {
     return await this.orderService.updateOrder(id, body);
   }
 
-  @Roles(Role.Admin)
+  @Roles(Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
