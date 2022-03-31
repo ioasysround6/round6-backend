@@ -50,6 +50,7 @@ export class UsersService {
           'users.firstName',
           'users.lastName',
           'users.email',
+          'users.photo',
           'users.role',
           /* 'orders.id',
           'orders.payment',

@@ -30,6 +30,9 @@ export class UsersEntity {
   @Column({ name: 'birth_date' })
   birthDate: string;
 
+  @Column({ length: '255' })
+  photo: string;
+
   @Column({ type: 'enum', enum: Role, default: Role.Tourist })
   role: Role;
 
