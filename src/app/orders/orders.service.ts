@@ -16,16 +16,17 @@ export class OrdersService {
   async seeOneOrder(conditions: FindConditions<OrdersEntity>) {
     try {
       return await createQueryBuilder(OrdersEntity, 'orders')
-        .leftJoinAndSelect('orders.tours', 'tours')
-        .leftJoinAndSelect('tours.categories', 'categories')
+        .leftJoinAndSelect('orders.tour', 'tour')
+        //.leftJoinAndSelect('tour.categories', 'categories')
         .select([
           'orders.id',
           'orders.quantity',
-          'tours.name',
-          'tours.description',
-          'tours.price',
-          'tours.photo',
-          'categories.name',
+          'tour.id',
+          'tour.name',
+          'tour.description',
+          'tour.price',
+          'tour.photo',
+          //'categories.name',
         ])
         .where(conditions)
         .getOne();
