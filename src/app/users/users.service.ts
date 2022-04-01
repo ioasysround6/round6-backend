@@ -46,8 +46,8 @@ export class UsersService {
   async getProfile(conditions: FindConditions<UsersEntity>) {
     try {
       return await createQueryBuilder(UsersEntity, 'users')
-        //.leftJoinAndSelect('users.orders', 'orders')
-        //.leftJoinAndSelect('orders.vehicles', 'vehicles')
+        .leftJoinAndSelect('users.orders', 'orders')
+        .leftJoinAndSelect('users.payment', 'payment')
         .select([
           'users.id',
           'users.firstName',
@@ -55,12 +55,15 @@ export class UsersService {
           'users.email',
           'users.photo',
           'users.role',
-          /* 'orders.id',
-          'orders.payment',
-          'orders.totalQuantity',
-          'vehicles.id',
-          'vehicles.brand',
-          'vehicles.model', */
+          'orders.id',
+          'orders.quantity',
+          'payment.id',
+          'payment.method',
+          'payment.installments',
+          'payment.cardNumber',
+          'payment.printedName',
+          'payment.dueDate',
+          'payment.securityCode',
         ])
         .where(conditions)
         .getOne();
