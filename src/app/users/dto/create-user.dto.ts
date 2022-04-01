@@ -12,12 +12,12 @@ import { RegExHelper } from 'src/helpers/regex.helper';
 export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
-  @Matches(RegExHelper.name, { message: MessageHelper.FULL_NAME_VALID })
+  @Matches(RegExHelper.name, { message: MessageHelper.FIRST_NAME_VALID })
   firstName: string;
 
   @IsNotEmpty()
   @IsString()
-  @Matches(RegExHelper.name, { message: MessageHelper.FULL_NAME_VALID })
+  @Matches(RegExHelper.name, { message: MessageHelper.LAST_NAME_VALID })
   lastName: string;
 
   @IsNotEmpty()
