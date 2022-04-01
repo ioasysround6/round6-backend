@@ -20,7 +20,7 @@ export class OrdersService {
         //.leftJoinAndSelect('tour.categories', 'categories')
         .select([
           'orders.id',
-          'orders.quantity',
+          'orders.amountPeople',
           'tour.id',
           'tour.communityName',
           'tour.description',

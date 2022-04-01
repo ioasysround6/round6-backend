@@ -48,7 +48,7 @@ export class UsersService {
           'users.photo',
           'users.role',
           'orders.id',
-          'orders.quantity',
+          'orders.amountPeople',
           'tour.id',
           'tour.communityName',
           'tour.description',

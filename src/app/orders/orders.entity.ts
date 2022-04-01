@@ -16,8 +16,8 @@ export class OrdersEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  quantity: number;
+  @Column({ name: 'amount_people' })
+  amountPeople: number;
 
   @ManyToOne(() => UsersEntity, (user) => user.orders)
   @JoinColumn({ name: 'user_id' })

@@ -5,7 +5,7 @@ import { UsersEntity } from 'src/app/users/users.entity';
 export class CreateOrderDto {
   @IsNotEmpty()
   @IsNumber()
-  quantity: number;
+  amountPeople: number;
 
   @IsNotEmpty()
   user: UsersEntity;

@@ -5,7 +5,7 @@ export class CreateOrders1648667796008 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE orders (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        quantity varchar(255) NOT NULL,
+        amount_people int NOT NULL,
         user_id uuid,
         tour_id uuid,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
