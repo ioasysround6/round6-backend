@@ -24,8 +24,6 @@ export class UsersService {
 
   async findAllUsers() {
     return await createQueryBuilder(UsersEntity, 'users')
-      //.leftJoinAndSelect('customers.orders', 'orders')
-      //.leftJoinAndSelect('orders.vehicles', 'vehicles')
       .select([
         'users.id',
         'users.firstName',
@@ -33,12 +31,6 @@ export class UsersService {
         'users.email',
         'users.photo',
         'users.role',
-        /* 'orders.id',
-        'orders.payment',
-        'orders.totalQuantity',
-        'vehicles.id',
-        'vehicles.brand',
-        'vehicles.model', */
       ])
       .getMany();
   }
@@ -47,7 +39,7 @@ export class UsersService {
     try {
       return await createQueryBuilder(UsersEntity, 'users')
         .leftJoinAndSelect('users.orders', 'orders')
-        .leftJoinAndSelect('users.payment', 'payment')
+        .leftJoinAndSelect('orders.tour', 'tour')
         .select([
           'users.id',
           'users.firstName',
@@ -57,13 +49,14 @@ export class UsersService {
           'users.role',
           'orders.id',
           'orders.quantity',
-          'payment.id',
-          'payment.method',
-          'payment.installments',
-          'payment.cardNumber',
-          'payment.printedName',
-          'payment.dueDate',
-          'payment.securityCode',
+          'tour.id',
+          'tour.communityName',
+          'tour.description',
+          'tour.accommodation',
+          'tour.activity',
+          'tour.travelDate',
+          'tour.hint',
+          'tour.price',
         ])
         .where(conditions)
         .getOne();
