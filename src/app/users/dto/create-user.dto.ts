@@ -5,6 +5,7 @@ import {
   MinLength,
   MaxLength,
   IsString,
+  IsOptional,
 } from 'class-validator';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
@@ -36,6 +37,7 @@ export class CreateUserDto {
   @IsString()
   birthDate: string;
 
+  @IsOptional()
   @IsString()
   photo: string;
 }
