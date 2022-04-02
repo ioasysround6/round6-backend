@@ -41,10 +41,10 @@ export class ToursEntity {
   @Column({ length: '255' })
   photo1: string;
 
-  @Column({ length: '255' })
+  @Column({ length: '255', nullable: true })
   photo2: string;
 
-  @Column({ length: '255' })
+  @Column({ length: '255', nullable: true })
   photo3: string;
 
   @OneToMany(() => OrdersEntity, (orders) => orders.tour)
