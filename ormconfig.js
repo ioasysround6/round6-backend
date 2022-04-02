@@ -18,5 +18,4 @@ module.exports = {
     entitiesDir: 'src/app/**/',
     migrationsDir: 'src/config/typeorm/migrations',
   },
-  seeds: [process.env.SEEDS],
 };
