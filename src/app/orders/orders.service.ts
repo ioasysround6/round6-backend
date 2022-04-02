@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
@@ -17,7 +21,7 @@ export class OrdersService {
     try {
       return await createQueryBuilder(OrdersEntity, 'orders')
         .leftJoinAndSelect('orders.tour', 'tour')
-        //.leftJoinAndSelect('tour.categories', 'categories')
+        .leftJoinAndSelect('orders.user', 'user')
         .select([
           'orders.id',
           'orders.amountPeople',
@@ -33,7 +37,9 @@ export class OrdersService {
           'tour.photo1',
           'tour.photo2',
           'tour.photo3',
-          //'categories.name',
+          'user.id',
+          'user.firstName',
+          'user.lastName',
         ])
         .where(conditions)
         .getOne();
@@ -43,8 +49,12 @@ export class OrdersService {
   }
 
   async createOrder(data: CreateOrderDto) {
-    const order = this.orderRepository.create(data);
-    return await this.orderRepository.save(order);
+    try {
+      const order = this.orderRepository.create(data);
+      return await this.orderRepository.save(order);
+    } catch (error) {
+      throw new UnprocessableEntityException(error.message);
+    }
   }
 
   async updateOrder(id: string, data: UpdateOrderDto) {
@@ -53,14 +63,14 @@ export class OrdersService {
       this.orderRepository.merge(order, data);
       return await this.orderRepository.save(order);
     } catch (error) {
-      throw new NotFoundException(MessageHelper.NOT_FOUND);
+      throw new UnprocessableEntityException(error.message);
     }
   }
 
   async deleteOrder(id: string) {
     try {
       await this.orderRepository.findOneOrFail({ id });
-      this.orderRepository.softDelete({ id });
+      this.orderRepository.delete({ id });
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
