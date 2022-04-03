@@ -35,6 +35,7 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @IsString()
+  @Matches(RegExHelper.date, { message: MessageHelper.DATE_VALID })
   birthDate: string;
 
   @IsOptional()

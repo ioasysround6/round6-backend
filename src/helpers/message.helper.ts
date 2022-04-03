@@ -7,9 +7,11 @@ export const MessageHelper = {
   PASSWORD_OR_EMAIL_INVALID: 'invalid credentials',
   PASSWORD_MIN_VALID: 'password must be at least 8 characters',
   PASSWORD_MAX_VALID: 'password must be a maximum of 30 characters',
+  DATE_VALID: 'date must be in XX/XX/XXXX format',
   CPF_VALID: 'cpf must be only numbers',
   INFORMATIONS_INVALID: 'invalid informations',
   BAD_REQUEST: 'Some information is wrong',
   NOT_FOUND: 'Unfortunately, the requested parameter was not found',
   FORBIDDEN: 'You do not have sufficient privileges to access the page',
+  INTERNAL_SERVER_ERROR: 'Ops! Something wrong happened',
 };
