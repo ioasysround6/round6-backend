@@ -29,7 +29,7 @@ export class OrdersService {
           'tour.communityName',
           'tour.description',
           'tour.accommodation',
-          'tour.activity',
+          'tour.activities',
           'tour.travelDate',
           'tour.hint',
           'tour.price',
