@@ -10,7 +10,7 @@ import { winstonTransport } from './config/transports/winston.transport';
 import { LoggerInterceptor } from './config/interceptors/logger.interceptor';
 import { OrdersModule } from './app/orders/orders.module';
 import { ToursModule } from './app/tours/tours.module';
-//import { CommentsModule } from './app/comments/comments.module';
+import { StoriesModule } from './app/stories/stories.module';
 
 @Module({
   imports: [
@@ -38,7 +38,7 @@ import { ToursModule } from './app/tours/tours.module';
     AuthModule,
     OrdersModule,
     ToursModule,
-    //CommentsModule,
+    StoriesModule,
   ],
   controllers: [],
   providers: [
