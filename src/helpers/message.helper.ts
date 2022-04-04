@@ -1,17 +1,16 @@
 export const MessageHelper = {
   PASSWORD_VALID:
-    'password must contain uppercase and lowercase letters, numbers and special characters',
-  FIRST_NAME_VALID:
-    'firstName must be only letters, hyphen and/or single quotes',
-  LAST_NAME_VALID: 'lastName must be only letters, hyphen and/or single quotes',
-  PASSWORD_OR_EMAIL_INVALID: 'invalid credentials',
-  PASSWORD_MIN_VALID: 'password must be at least 8 characters',
-  PASSWORD_MAX_VALID: 'password must be a maximum of 30 characters',
-  DATE_VALID: 'date must be in XX/XX/XXXX format',
-  CPF_VALID: 'cpf must be only numbers',
-  INFORMATIONS_INVALID: 'invalid informations',
-  BAD_REQUEST: 'Some information is wrong',
-  NOT_FOUND: 'Unfortunately, the requested parameter was not found',
-  FORBIDDEN: 'You do not have sufficient privileges to access the page',
-  INTERNAL_SERVER_ERROR: 'Ops! Something wrong happened',
+    'A senha deve conter letras maiúsculas, minúsculas, números e caracteres especiais',
+  FIRST_NAME_VALID: 'Nome deve conter apenas letras, hífen e/ou aspas simples',
+  LAST_NAME_VALID:
+    'Sobrenome deve conter apenas letras, hífen e/ou aspas simples',
+  PASSWORD_OR_EMAIL_INVALID: 'Credenciais inválidas',
+  PASSWORD_MIN_VALID: 'A senha deve conter pelo menos 8 caracteres',
+  PASSWORD_MAX_VALID: 'A senha deve ter no máximo 30 caracteres',
+  DATE_VALID: 'A data deve estar no formato XX/XX/XXXX',
+  INFORMATIONS_INVALID: 'Informações inválidas',
+  BAD_REQUEST: 'Alguma informação está errada',
+  NOT_FOUND: 'Infelizmente, a página buscada não foi encontrada',
+  FORBIDDEN: 'Privilégios insuficientes para acessar a página',
+  INTERNAL_SERVER_ERROR: 'Opa! Algo errado aconteceu',
 };
