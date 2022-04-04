@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateStoryDto {
   @IsNotEmpty()
@@ -13,11 +13,11 @@ export class CreateStoryDto {
   @IsString()
   localization: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   mainActivities: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   curiosities: string;
 
