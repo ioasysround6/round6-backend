@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
@@ -15,14 +19,12 @@ export class ToursService {
 
   async seeAllTours() {
     return await createQueryBuilder(ToursEntity, 'tours')
-      //.leftJoinAndSelect('customers.orders', 'orders')
-      //.leftJoinAndSelect('orders.vehicles', 'vehicles')
       .select([
         'tours.id',
         'tours.communityName',
         'tours.description',
         'tours.accommodation',
-        'tours.activity',
+        'tours.activities',
         'tours.travelDate',
         'tours.hint',
         'tours.price',
@@ -30,12 +32,6 @@ export class ToursService {
         'tours.photo1',
         'tours.photo2',
         'tours.photo3',
-        /* 'orders.id',
-        'orders.payment',
-        'orders.totalQuantity',
-        'vehicles.id',
-        'vehicles.brand',
-        'vehicles.model', */
       ])
       .getMany();
   }
@@ -43,14 +39,12 @@ export class ToursService {
   async seeOneTour(conditions: FindConditions<ToursEntity>) {
     try {
       return await createQueryBuilder(ToursEntity, 'tours')
-        //.leftJoinAndSelect('users.orders', 'orders')
-        //.leftJoinAndSelect('orders.vehicles', 'vehicles')
         .select([
           'tours.id',
           'tours.communityName',
           'tours.description',
           'tours.accommodation',
-          'tours.activity',
+          'tours.activities',
           'tours.travelDate',
           'tours.hint',
           'tours.price',
@@ -58,12 +52,6 @@ export class ToursService {
           'tours.photo1',
           'tours.photo2',
           'tours.photo3',
-          /* 'orders.id',
-          'orders.payment',
-          'orders.totalQuantity',
-          'vehicles.id',
-          'vehicles.brand',
-          'vehicles.model', */
         ])
         .where(conditions)
         .getOne();
@@ -73,8 +61,14 @@ export class ToursService {
   }
 
   async createTour(data: CreateTourDto) {
-    const tour = this.tourRepository.create(data);
-    return await this.tourRepository.save(tour);
+    try {
+      const tour = this.tourRepository.create(data);
+      return await this.tourRepository.save(tour);
+    } catch (error) {
+      throw new InternalServerErrorException(
+        MessageHelper.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   async updateTour(id: string, data: UpdateTourDto) {

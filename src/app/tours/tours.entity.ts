@@ -20,16 +20,16 @@ export class ToursEntity {
   @Column()
   description: string;
 
-  @Column({ length: '255' })
+  @Column()
   accommodation: string;
 
-  @Column({ length: '255' })
-  activity: string;
+  @Column()
+  activities: string;
 
   @Column({ name: 'travel_date', length: '100' })
   travelDate: string;
 
-  @Column({ length: '255' })
+  @Column()
   hint: string;
 
   @Column()

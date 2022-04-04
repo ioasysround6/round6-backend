@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
@@ -29,6 +33,7 @@ export class UsersService {
         'users.firstName',
         'users.lastName',
         'users.email',
+        'users.birthDate',
         'users.photo',
         'users.role',
       ])
@@ -45,6 +50,7 @@ export class UsersService {
           'users.firstName',
           'users.lastName',
           'users.email',
+          'users.birthDate',
           'users.photo',
           'users.role',
           'orders.id',
@@ -53,7 +59,7 @@ export class UsersService {
           'tour.communityName',
           'tour.description',
           'tour.accommodation',
-          'tour.activity',
+          'tour.activities',
           'tour.travelDate',
           'tour.hint',
           'tour.price',
@@ -77,26 +83,38 @@ export class UsersService {
   }
 
   async createUserAccount(data: CreateUserDto) {
-    const { email } = data;
-    const verifyUser = await this.userRepository.findOne({ email });
-    checkDuplicate(verifyUser);
-    const user = this.userRepository.create(data);
-    user.password = hashSync(user.password, 10);
-    const savedUser = await this.userRepository.save(user);
-    savedUser.password = undefined;
-    return savedUser;
+    try {
+      const { email } = data;
+      const verifyUser = await this.userRepository.findOne({ email });
+      checkDuplicate(verifyUser);
+      const user = this.userRepository.create(data);
+      user.password = hashSync(user.password, 10);
+      const savedUser = await this.userRepository.save(user);
+      savedUser.password = undefined;
+      return savedUser;
+    } catch (error) {
+      throw new InternalServerErrorException(
+        MessageHelper.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   async createAdminAccount(data: CreateUserDto) {
-    const { email } = data;
-    const verifyAdmin = await this.userRepository.findOne({ email });
-    checkDuplicate(verifyAdmin);
-    const admin = this.userRepository.create(data);
-    admin.password = hashSync(admin.password, 10);
-    admin.role = Role.Admin;
-    const savedAdmin = await this.userRepository.save(admin);
-    savedAdmin.password = undefined;
-    return savedAdmin;
+    try {
+      const { email } = data;
+      const verifyAdmin = await this.userRepository.findOne({ email });
+      checkDuplicate(verifyAdmin);
+      const admin = this.userRepository.create(data);
+      admin.password = hashSync(admin.password, 10);
+      admin.role = Role.Admin;
+      const savedAdmin = await this.userRepository.save(admin);
+      savedAdmin.password = undefined;
+      return savedAdmin;
+    } catch (error) {
+      throw new InternalServerErrorException(
+        MessageHelper.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   async updateAccount(id: string, data: UpdateUserDto) {

@@ -15,7 +15,7 @@ export class CreateTourDto {
 
   @IsNotEmpty()
   @IsString()
-  activity: string;
+  activities: string;
 
   @IsNotEmpty()
   @IsString()
