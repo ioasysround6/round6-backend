@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
@@ -105,9 +109,12 @@ export class UsersService {
     return savedAdmin;
   }
 
-  async updateAccount(id: string, data: UpdateUserDto) {
+  async updateAccount(
+    conditions: FindConditions<UsersEntity>,
+    data: UpdateUserDto,
+  ) {
     try {
-      const user = await this.userRepository.findOneOrFail({ id });
+      const user = await this.userRepository.findOneOrFail(conditions);
       const userOldPassword = user.password;
       this.userRepository.merge(user, data);
       if (userOldPassword !== user.password) {
@@ -117,13 +124,16 @@ export class UsersService {
       updatedUser.password = undefined;
       return updatedUser;
     } catch (error) {
-      throw new NotFoundException(MessageHelper.NOT_FOUND);
+      throw new ConflictException(MessageHelper.CONFLICT);
     }
   }
 
-  async recoverPassword(id: string, data: UpdatePasswordDto) {
+  async recoverPassword(
+    conditions: FindConditions<UsersEntity>,
+    data: UpdatePasswordDto,
+  ) {
     try {
-      const user = await this.userRepository.findOneOrFail({ id });
+      const user = await this.userRepository.findOneOrFail(conditions);
       const password = hashSync(data.password, 10);
       data = {
         ...data,
@@ -138,10 +148,10 @@ export class UsersService {
     }
   }
 
-  async deleteAccount(id: string) {
+  async deleteAccount(conditions: FindConditions<UsersEntity>) {
     try {
-      await this.userRepository.findOneOrFail({ id });
-      this.userRepository.delete({ id });
+      await this.userRepository.findOneOrFail(conditions);
+      this.userRepository.delete(conditions);
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }

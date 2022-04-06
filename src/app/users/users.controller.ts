@@ -5,8 +5,6 @@ import {
   Get,
   HttpCode,
   HttpStatus,
-  Param,
-  ParseUUIDPipe,
   Patch,
   Post,
   Req,
@@ -59,29 +57,23 @@ export class UsersController {
 
   @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Patch(':id')
-  async updateAccount(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() body: UpdateUserDto,
-  ) {
-    return await this.userService.updateAccount(id, body);
+  @Patch('profile')
+  async updateAccount(@Req() req: any, @Body() body: UpdateUserDto) {
+    return await this.userService.updateAccount(req.user, body);
   }
 
   @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Patch('password/:id')
-  async recoverPassword(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() body: UpdatePasswordDto,
-  ) {
-    return await this.userService.recoverPassword(id, body);
+  @Patch('profile/password')
+  async recoverPassword(@Req() req: any, @Body() body: UpdatePasswordDto) {
+    return await this.userService.recoverPassword(req.user, body);
   }
 
   @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Delete(':id')
+  @Delete('profile')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async deleteAccount(@Param('id', new ParseUUIDPipe()) id: string) {
-    await this.userService.deleteAccount(id);
+  async deleteAccount(@Req() req: any) {
+    await this.userService.deleteAccount(req.user);
   }
 }
