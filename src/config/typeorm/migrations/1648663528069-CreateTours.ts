@@ -9,7 +9,7 @@ export class CreateTours1648663528069 implements MigrationInterface {
         description text NOT NULL,
         accommodation text NOT NULL,
         activities text NOT NULL,
-        travel_date varchar(100) NOT NULL,
+        travel_date text NOT NULL,
         hint text NOT NULL,
         price decimal(10, 2) NOT NULL,
         vacancies int NOT NULL,
