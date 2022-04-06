@@ -1,8 +1,4 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
@@ -85,19 +81,15 @@ export class UsersService {
   }
 
   async createUserAccount(data: CreateUserDto) {
-    try {
-      const { email } = data;
-      const verifyUser = await this.userRepository.findOne({ email });
-      checkDuplicate(verifyUser);
-      const user = this.userRepository.create(data);
-      user.password = hashSync(user.password, 10);
-      checkDate(user.birthDate);
-      const savedUser = await this.userRepository.save(user);
-      savedUser.password = undefined;
-      return savedUser;
-    } catch (error) {
-      throw new ConflictException(MessageHelper.CONFLICT);
-    }
+    const { email } = data;
+    const verifyUser = await this.userRepository.findOne({ email });
+    checkDuplicate(verifyUser);
+    const user = this.userRepository.create(data);
+    user.password = hashSync(user.password, 10);
+    checkDate(user.birthDate);
+    const savedUser = await this.userRepository.save(user);
+    savedUser.password = undefined;
+    return savedUser;
   }
 
   async createAdminAccount(data: CreateUserDto) {
