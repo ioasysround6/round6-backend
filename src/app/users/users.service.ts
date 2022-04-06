@@ -141,7 +141,7 @@ export class UsersService {
   async deleteAccount(id: string) {
     try {
       await this.userRepository.findOneOrFail({ id });
-      this.userRepository.softDelete({ id });
+      this.userRepository.delete({ id });
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
