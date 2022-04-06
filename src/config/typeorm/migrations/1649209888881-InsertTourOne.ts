@@ -13,9 +13,9 @@ const hint =
   '1. Leve roupas leves e que te protejam do Sol. 2. Leve seus materiais individuais para evitar materiais descartáveis em respeito a natureza. 3. Tire bastante fotos mas não divulgue imagens das pessoas da comunidade sem a autorização das mesmas. 4. E divirta-se bastante e não esqueça de postar o seu diário de viagem no nosso feed!';
 const price = 600;
 const vacancies = 10;
-const photo1 = 'https://imgur.com/EJftyc4';
-const photo2 = 'https://imgur.com/bxtO5TP';
-const photo3 = 'https://imgur.com/Ao6xwwU';
+const photo1 = 'https://i.imgur.com/EJftyc4.jpg';
+const photo2 = 'https://i.imgur.com/bxtO5TP.jpg';
+const photo3 = 'https://i.imgur.com/Ao6xwwU.jpg';
 
 export class InsertTourOne1649209888881 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
