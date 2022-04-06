@@ -9,6 +9,7 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  Req,
   UseGuards,
 } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
@@ -36,8 +37,8 @@ export class OrdersController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async createOrder(@Body() body: CreateOrderDto) {
-    return await this.orderService.createOrder(body);
+  async createOrder(@Body() body: CreateOrderDto, @Req() req: any) {
+    return await this.orderService.createOrder(body, req);
   }
 
   @Roles(Role.Tourist)

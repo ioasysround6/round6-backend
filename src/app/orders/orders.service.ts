@@ -40,6 +40,8 @@ export class OrdersService {
           'user.id',
           'user.firstName',
           'user.lastName',
+          'user.email',
+          'user.birthDate',
         ])
         .where(conditions)
         .getOne();
@@ -48,10 +50,13 @@ export class OrdersService {
     }
   }
 
-  async createOrder(data: CreateOrderDto) {
+  async createOrder(data: CreateOrderDto, req: any) {
     try {
       const order = this.orderRepository.create(data);
-      return await this.orderRepository.save(order);
+      order.user = req.user.id;
+      const savedOrder = await this.orderRepository.save(order);
+      savedOrder.user = undefined;
+      return savedOrder;
     } catch (error) {
       throw new UnprocessableEntityException(error.message);
     }
