@@ -1,12 +1,12 @@
 import {
+  ConflictException,
   Injectable,
-  InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
-import { checkDuplicate } from 'src/helpers/function.helper';
+import { checkDate, checkDuplicate } from 'src/helpers/function.helper';
 import { MessageHelper } from 'src/helpers/message.helper';
 import {
   createQueryBuilder,
@@ -63,6 +63,8 @@ export class UsersService {
           'tour.travelDate',
           'tour.hint',
           'tour.price',
+          'tour.vacancies',
+          'tour.createdAt',
         ])
         .where(conditions)
         .getOne();
@@ -89,32 +91,26 @@ export class UsersService {
       checkDuplicate(verifyUser);
       const user = this.userRepository.create(data);
       user.password = hashSync(user.password, 10);
+      checkDate(user.birthDate);
       const savedUser = await this.userRepository.save(user);
       savedUser.password = undefined;
       return savedUser;
     } catch (error) {
-      throw new InternalServerErrorException(
-        MessageHelper.INTERNAL_SERVER_ERROR,
-      );
+      throw new ConflictException(MessageHelper.CONFLICT);
     }
   }
 
   async createAdminAccount(data: CreateUserDto) {
-    try {
-      const { email } = data;
-      const verifyAdmin = await this.userRepository.findOne({ email });
-      checkDuplicate(verifyAdmin);
-      const admin = this.userRepository.create(data);
-      admin.password = hashSync(admin.password, 10);
-      admin.role = Role.Admin;
-      const savedAdmin = await this.userRepository.save(admin);
-      savedAdmin.password = undefined;
-      return savedAdmin;
-    } catch (error) {
-      throw new InternalServerErrorException(
-        MessageHelper.INTERNAL_SERVER_ERROR,
-      );
-    }
+    const { email } = data;
+    const verifyAdmin = await this.userRepository.findOne({ email });
+    checkDuplicate(verifyAdmin);
+    const admin = this.userRepository.create(data);
+    admin.password = hashSync(admin.password, 10);
+    admin.role = Role.Admin;
+    checkDate(admin.birthDate);
+    const savedAdmin = await this.userRepository.save(admin);
+    savedAdmin.password = undefined;
+    return savedAdmin;
   }
 
   async updateAccount(id: string, data: UpdateUserDto) {

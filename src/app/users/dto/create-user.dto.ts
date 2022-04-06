@@ -6,6 +6,7 @@ import {
   MaxLength,
   IsString,
   IsOptional,
+  IsDateString,
 } from 'class-validator';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
@@ -34,9 +35,8 @@ export class CreateUserDto {
   password: string;
 
   @IsNotEmpty()
-  @IsString()
-  @Matches(RegExHelper.date, { message: MessageHelper.DATE_VALID })
-  birthDate: string;
+  @IsDateString()
+  birthDate: Date;
 
   @IsOptional()
   @IsString()

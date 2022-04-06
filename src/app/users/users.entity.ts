@@ -29,7 +29,7 @@ export class UsersEntity {
   password: string;
 
   @Column({ name: 'birth_date' })
-  birthDate: string;
+  birthDate: Date;
 
   @Column({ length: '255' })
   photo: string;
