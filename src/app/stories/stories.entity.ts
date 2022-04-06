@@ -21,7 +21,7 @@ export class StoriesEntity {
   @Column()
   description: string;
 
-  @Column({ length: '255' })
+  @Column()
   localization: string;
 
   @Column({ name: 'main_activities' })

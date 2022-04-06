@@ -7,7 +7,7 @@ export class CreateStories1649014853479 implements MigrationInterface {
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         community_name varchar(255) NOT NULL,
         description text NOT NULL,
-        localization varchar(255) NOT NULL,
+        localization text NOT NULL,
         main_activities text,
         curiosities text,
         photo varchar(255) NOT NULL,
