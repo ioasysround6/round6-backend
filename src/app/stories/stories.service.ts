@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
@@ -31,6 +27,8 @@ export class StoriesService {
         'user.id',
         'user.firstName',
         'user.lastName',
+        'user.email',
+        'user.birthDate',
       ])
       .getMany();
   }
@@ -51,6 +49,7 @@ export class StoriesService {
           'user.firstName',
           'user.lastName',
           'user.email',
+          'user.birthDate',
         ])
         .where(conditions)
         .getOne();
@@ -60,15 +59,11 @@ export class StoriesService {
   }
 
   async createStory(data: CreateStoryDto, req: any) {
-    try {
-      const story = this.storyRepository.create(data);
-      story.user = req.user;
-      return await this.storyRepository.save(story);
-    } catch (error) {
-      throw new InternalServerErrorException(
-        MessageHelper.INTERNAL_SERVER_ERROR,
-      );
-    }
+    const story = this.storyRepository.create(data);
+    story.user = req.user;
+    const savedStory = await this.storyRepository.save(story);
+    savedStory.user = undefined;
+    return savedStory;
   }
 
   async updateStory(id: string, data: UpdateStoryDto) {

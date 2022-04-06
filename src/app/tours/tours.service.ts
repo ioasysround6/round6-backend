@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
@@ -61,14 +57,8 @@ export class ToursService {
   }
 
   async createTour(data: CreateTourDto) {
-    try {
-      const tour = this.tourRepository.create(data);
-      return await this.tourRepository.save(tour);
-    } catch (error) {
-      throw new InternalServerErrorException(
-        MessageHelper.INTERNAL_SERVER_ERROR,
-      );
-    }
+    const tour = this.tourRepository.create(data);
+    return await this.tourRepository.save(tour);
   }
 
   async updateTour(id: string, data: UpdateTourDto) {
