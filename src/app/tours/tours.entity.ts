@@ -26,7 +26,7 @@ export class ToursEntity {
   @Column()
   activities: string;
 
-  @Column({ name: 'travel_date', length: '100' })
+  @Column({ name: 'travel_date' })
   travelDate: string;
 
   @Column()
