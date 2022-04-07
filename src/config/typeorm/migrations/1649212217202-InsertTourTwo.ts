@@ -11,8 +11,8 @@ const travelDate =
   'Serão 4 dias e 3 noites de passeio. As viagens acontecem entre Abril e Outubro. Data disponível: 04/set - 07/set';
 const hint =
   '1. Leve roupas leves e que te protejam do Sol. 2. Leve seus materiais individuais para evitar materiais descartáveis em respeito a natureza. 3. Tire bastante fotos mas não divulgue imagens das pessoas da comunidade sem a autorização das mesmas. 4. E divirta-se bastante e não esqueça de postar o seu diário de viagem no nosso feed!';
-const price = 500;
-const vacancies = 12;
+const price = 1500;
+const vacancies = 18;
 const photo1 = 'foto da comunidade Sobre as águas';
 
 export class InsertTourTwo1649212217202 implements MigrationInterface {
