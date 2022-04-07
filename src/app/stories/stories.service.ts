@@ -35,6 +35,7 @@ export class StoriesService {
 
   async seeOneStory(conditions: FindConditions<StoriesEntity>) {
     try {
+      await this.storyRepository.findOneOrFail(conditions);
       return await createQueryBuilder(StoriesEntity, 'stories')
         .leftJoinAndSelect('stories.user', 'user')
         .select([

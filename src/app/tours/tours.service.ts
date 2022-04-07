@@ -34,6 +34,7 @@ export class ToursService {
 
   async seeOneTour(conditions: FindConditions<ToursEntity>) {
     try {
+      await this.tourRepository.findOneOrFail(conditions);
       return await createQueryBuilder(ToursEntity, 'tours')
         .select([
           'tours.id',
