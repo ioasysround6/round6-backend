@@ -2,20 +2,19 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 const communityName = 'Mãos na argila!';
 const description =
-  'Conheça de perto uma das comunidades tradicionais produtoras de artesanato de argila, Moita Redonda! Localizada em Cascavel, a 60 minutos de Fortaleza, é uma comunidade centenária e um local fantástico repleto de figuras icônicas no artesanato cearense! Moita tem aproximadamente 60% dos moradores vivendo exclusivamente da fabricação artesanal de peças de Argila, você encontra desde pequenos utensílios (Vasos, panelas e filtros) até Carrancas de 2 metros de altura.';
+  'Conheça de perto uma das comunidades tradicionais produtoras de artesanato de argila, Mato Serrado. Localizada em Crato, a 8 horas de Fortaleza, é uma comunidade centenária e um local fantástico repleto de figuras icônicas no artesanato cearense!';
 const accommodation =
-  'Você ficará hospedado na pousada de Dona Maria, ela faz uma tapioca tapioca orgânica com alimentos frescos no café da manhã que você só comerá igual neste local. Próximo do rio preguiças você terá tranquilidade, muito verde e ar puro ao seu redor.';
+  'Você ficará hospedado na pousada de Dona Maria, ela faz uma tapioca tapioca orgânica com alimentos frescos no café da manhã, que não tem igual. O local é próximo do Rio Preguiças, onde você terá tranquilidade, muito verde e ar puro ao seu redor.';
 const activities =
-  'Neste pacote você irá: 1. Visitar a casa de um dos artesãos locais, onde poderá acompanhar todas as etapas da fabricação de uma peça de argila artesanal, podendo inclusive moldar a sua própria peça de barro nesta visita para recebê-la no último dia de viagem. 2. Você participará de uma trilha até o rio preguiças com um guia local e no final participará de um momento de meditação e relaxamento no qual poderá fazer um banho relaxante e revigorante com argila úmida recém extraída do rio. 3. Visitará o museu da Argila Viva onde conhecerá os projetos locais da associação de produtores de artesanato de barro do Ceará, além de assistir uma orquestra infanto-juvenil que utiliza instrumentos musicais feitos com argila.';
-const travelDate =
-  'Serão 4 dias e 3 noites de passeio. Data disponível: 21/abril - 23/abril';
+  'Visita na casa de um dos artesãos locais, acompanhando todas as etapas da fabricação de uma peça de argila artesanal, podendo inclusive moldar a sua própria peça de barro Trilha até o Rio Preguiças com um guia local, com um momento de meditação e relaxamento, além de um banho relaxante e revigorante com argila úmida recém extraída do rio no final Visita ao museu Argilas Vivas onde conhecerá os projetos locais, além de assistir uma orquestra infanto-juvenil que utiliza instrumentos musicais feitos com argila';
+const travelDate = 'Do dia 21/06 a 23/06 4 dias e 3 noites de passeio.';
 const hint =
-  '1. Leve roupas leves e que te protejam do Sol. 2. Leve seus materiais individuais para evitar materiais descartáveis em respeito a natureza. 3. Tire bastante fotos mas não divulgue imagens das pessoas da comunidade sem a autorização das mesmas. 4. E divirta-se bastante e não esqueça de postar o seu diário de viagem no nosso feed!';
+  'Leve roupas leves e que te protejam do sol Leve seus materiais individuais para evitar o uso de descartáveis, em respeito a natureza Tire muitas fotos mas não divulgue imagens das pessoas da comunidade sem a autorização delas Divirta-se bastante e não esqueça de postar o seu diário de viagem no nosso feed';
 const price = 600;
-const vacancies = 10;
-const photo1 = 'https://i.imgur.com/EJftyc4.jpg';
-const photo2 = 'https://i.imgur.com/bxtO5TP.jpg';
-const photo3 = 'https://i.imgur.com/Ao6xwwU.jpg';
+const vacancies = 7;
+const photo1 = 'https://i.imgur.com/bxtO5TP.jpg';
+const photo2 = 'https://i.imgur.com/EJftyc4.jpg';
+const photo3 = 'https://i.imgur.com/Oa2gFW5.jpg';
 
 export class InsertTourOne1649209888881 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
