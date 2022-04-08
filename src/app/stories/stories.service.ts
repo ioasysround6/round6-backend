@@ -15,7 +15,6 @@ export class StoriesService {
 
   async seeAllStories() {
     return await createQueryBuilder(StoriesEntity, 'stories')
-      .leftJoinAndSelect('stories.user', 'user')
       .select([
         'stories.id',
         'stories.communityName',
@@ -24,11 +23,6 @@ export class StoriesService {
         'stories.mainActivities',
         'stories.curiosities',
         'stories.photo',
-        'user.id',
-        'user.firstName',
-        'user.lastName',
-        'user.email',
-        'user.birthDate',
       ])
       .getMany();
   }
@@ -37,7 +31,6 @@ export class StoriesService {
     try {
       await this.storyRepository.findOneOrFail(conditions);
       return await createQueryBuilder(StoriesEntity, 'stories')
-        .leftJoinAndSelect('stories.user', 'user')
         .select([
           'stories.id',
           'stories.communityName',
@@ -46,11 +39,6 @@ export class StoriesService {
           'stories.mainActivities',
           'stories.curiosities',
           'stories.photo',
-          'user.id',
-          'user.firstName',
-          'user.lastName',
-          'user.email',
-          'user.birthDate',
         ])
         .where(conditions)
         .getOne();
