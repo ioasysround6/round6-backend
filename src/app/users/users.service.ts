@@ -42,6 +42,7 @@ export class UsersService {
 
   async getProfile(conditions: FindConditions<UsersEntity>) {
     try {
+      await this.userRepository.findOneOrFail(conditions);
       return await createQueryBuilder(UsersEntity, 'users')
         .leftJoinAndSelect('users.orders', 'orders')
         .leftJoinAndSelect('orders.tour', 'tour')

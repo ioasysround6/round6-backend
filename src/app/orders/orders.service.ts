@@ -19,6 +19,7 @@ export class OrdersService {
 
   async seeOneOrder(conditions: FindConditions<OrdersEntity>) {
     try {
+      await this.orderRepository.findOneOrFail(conditions);
       return await createQueryBuilder(OrdersEntity, 'orders')
         .leftJoinAndSelect('orders.tour', 'tour')
         .leftJoinAndSelect('orders.user', 'user')
