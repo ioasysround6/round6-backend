@@ -47,6 +47,7 @@ export class StoriesController {
   @Roles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   async updateStory(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateStoryDto,

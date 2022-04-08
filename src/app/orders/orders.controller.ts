@@ -44,6 +44,7 @@ export class OrdersController {
   @Roles(Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   async updateOrder(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateOrderDto,

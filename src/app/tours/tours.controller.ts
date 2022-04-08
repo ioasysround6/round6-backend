@@ -37,7 +37,7 @@ export class ToursController {
 
   @Roles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Post('register')
+  @Post()
   @HttpCode(HttpStatus.CREATED)
   async createTour(@Body() body: CreateTourDto) {
     return await this.tourService.createTour(body);
@@ -46,6 +46,7 @@ export class ToursController {
   @Roles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   async updateTour(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateTourDto,

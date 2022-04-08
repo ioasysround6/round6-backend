@@ -40,7 +40,7 @@ export class UsersController {
   }
 
   @SkipThrottle(false)
-  @Post('register')
+  @Post()
   @HttpCode(HttpStatus.CREATED)
   async createUserAccount(@Body() body: CreateUserDto) {
     return await this.userService.createUserAccount(body);
@@ -49,7 +49,7 @@ export class UsersController {
   @SkipThrottle(false)
   @Roles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Post('admin/register')
+  @Post('admin')
   @HttpCode(HttpStatus.CREATED)
   async createAdminAccount(@Body() body: CreateUserDto) {
     return await this.userService.createAdminAccount(body);
@@ -57,21 +57,23 @@ export class UsersController {
 
   @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Patch('profile')
+  @Patch()
+  @HttpCode(HttpStatus.NO_CONTENT)
   async updateAccount(@Req() req: any, @Body() body: UpdateUserDto) {
     return await this.userService.updateAccount(req.user, body);
   }
 
   @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Patch('profile/password')
+  @Patch('password')
+  @HttpCode(HttpStatus.NO_CONTENT)
   async recoverPassword(@Req() req: any, @Body() body: UpdatePasswordDto) {
     return await this.userService.recoverPassword(req.user, body);
   }
 
   @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Delete('profile')
+  @Delete()
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteAccount(@Req() req: any) {
     await this.userService.deleteAccount(req.user);
