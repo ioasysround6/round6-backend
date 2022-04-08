@@ -59,7 +59,7 @@ export class StoriesService {
     try {
       const story = await this.storyRepository.findOneOrFail({ id });
       this.storyRepository.merge(story, data);
-      return await this.storyRepository.save(story);
+      await this.storyRepository.save(story);
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }

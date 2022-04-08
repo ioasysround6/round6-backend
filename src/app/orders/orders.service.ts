@@ -67,7 +67,7 @@ export class OrdersService {
     try {
       const order = await this.orderRepository.findOneOrFail({ id });
       this.orderRepository.merge(order, data);
-      return await this.orderRepository.save(order);
+      await this.orderRepository.save(order);
     } catch (error) {
       throw new UnprocessableEntityException(error.message);
     }

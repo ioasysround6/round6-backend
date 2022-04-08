@@ -66,7 +66,7 @@ export class ToursService {
     try {
       const tour = await this.tourRepository.findOneOrFail({ id });
       this.tourRepository.merge(tour, data);
-      return await this.tourRepository.save(tour);
+      await this.tourRepository.save(tour);
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }

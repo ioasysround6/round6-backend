@@ -121,9 +121,7 @@ export class UsersService {
       if (userOldPassword !== user.password) {
         user.password = hashSync(user.password, 10);
       }
-      const updatedUser = await this.userRepository.save(user);
-      updatedUser.password = undefined;
-      return updatedUser;
+      await this.userRepository.save(user);
     } catch (error) {
       throw new ConflictException(MessageHelper.CONFLICT);
     }
@@ -141,9 +139,7 @@ export class UsersService {
         password,
       };
       this.userRepository.merge(user, data);
-      const updatedPassword = await this.userRepository.save(user);
-      updatedPassword.password = undefined;
-      return updatedPassword;
+      await this.userRepository.save(user);
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
