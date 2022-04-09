@@ -10,6 +10,10 @@ export const MessageHelper = {
   DATE_VALID: 'Para se cadastrar, é necessário ter no mínimo 18 anos',
   BAD_REQUEST: 'Alguma informação está errada',
   NOT_FOUND: 'Infelizmente, a página buscada não foi encontrada',
+  UNIDENTIFIED_TOUR: 'Passeio turístico não identificado',
   FORBIDDEN: 'Privilégios insuficientes para acessar a página',
   CONFLICT: 'Esse email já existe',
+  UNAVAILABLE_VACANCIES: 'Não é possível atender o número de vagas solicitadas',
+  IMPOSSIBLE_UPDATE:
+    'Não é possível atualizar o pedido para a mesma quantidade de pessoas que já contém no pacote',
 };
