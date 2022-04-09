@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsUUID, Min } from 'class-validator';
 import { ToursEntity } from 'src/app/tours/tours.entity';
 
 export class CreateOrderDto {
@@ -8,5 +8,6 @@ export class CreateOrderDto {
   amountPeople: number;
 
   @IsNotEmpty()
+  @IsUUID()
   tour: ToursEntity;
 }
