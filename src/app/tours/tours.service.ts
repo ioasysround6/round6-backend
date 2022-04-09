@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
@@ -54,6 +58,14 @@ export class ToursService {
         .getOne();
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
+  }
+
+  async checkTourExists(conditions: FindConditions<ToursEntity>) {
+    try {
+      return await this.tourRepository.findOneOrFail(conditions);
+    } catch (error) {
+      throw new BadRequestException(MessageHelper.UNIDENTIFIED_TOUR);
     }
   }
 
