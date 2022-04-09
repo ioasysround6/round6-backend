@@ -49,7 +49,7 @@ export class OrdersController {
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateOrderDto,
   ) {
-    return await this.orderService.updateOrder(id, body);
+    return await this.orderService.updateOrder({ id }, body);
   }
 
   @Roles(Role.Tourist)

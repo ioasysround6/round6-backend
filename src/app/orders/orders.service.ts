@@ -1,11 +1,9 @@
-import {
-  Injectable,
-  NotFoundException,
-  UnprocessableEntityException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { checkOrder, controlVacancies } from 'src/helpers/function.helper';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
+import { ToursService } from '../tours/tours.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-orders.dto';
 import { OrdersEntity } from './orders.entity';
@@ -15,6 +13,7 @@ export class OrdersService {
   constructor(
     @InjectRepository(OrdersEntity)
     private readonly orderRepository: Repository<OrdersEntity>,
+    private readonly tourService: ToursService,
   ) {}
 
   async seeOneOrder(conditions: FindConditions<OrdersEntity>) {
@@ -52,25 +51,32 @@ export class OrdersService {
   }
 
   async createOrder(data: CreateOrderDto, req: any) {
-    try {
-      const order = this.orderRepository.create(data);
-      order.user = req.user.id;
-      const savedOrder = await this.orderRepository.save(order);
-      savedOrder.user = undefined;
-      return savedOrder;
-    } catch (error) {
-      throw new UnprocessableEntityException(error.message);
-    }
+    const order = this.orderRepository.create(data);
+    order.user = req.user.id;
+    const tour = await this.tourService.checkTourExists(order.tour);
+    controlVacancies(tour.vacancies, order.amountPeople);
+    const savedOrder = await this.orderRepository.save(order);
+    savedOrder.user = undefined;
+    return savedOrder;
   }
 
-  async updateOrder(id: string, data: UpdateOrderDto) {
-    try {
-      const order = await this.orderRepository.findOneOrFail({ id });
-      this.orderRepository.merge(order, data);
-      await this.orderRepository.save(order);
-    } catch (error) {
-      throw new UnprocessableEntityException(error.message);
-    }
+  async updateOrder(
+    conditions: FindConditions<OrdersEntity>,
+    data: UpdateOrderDto,
+  ) {
+    const order = await createQueryBuilder(OrdersEntity, 'orders')
+      .leftJoinAndSelect('orders.tour', 'tour')
+      .select(['orders.id', 'orders.amountPeople', 'tour.id'])
+      .where(conditions)
+      .getOne();
+    checkOrder(order);
+    const tour = await this.tourService.seeOneTour(order.tour);
+    const oldAmount = order.amountPeople;
+    this.orderRepository.merge(order, data);
+    const newAmount = order.amountPeople;
+    const requestedVacancies = newAmount - oldAmount;
+    controlVacancies(tour.vacancies, requestedVacancies);
+    await this.orderRepository.save(order);
   }
 
   async deleteOrder(id: string) {
