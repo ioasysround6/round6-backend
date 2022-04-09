@@ -29,9 +29,6 @@ export class ControlVacanciesFunction1648850231405
           IF vacancies_quantity < requested_vacancies THEN 
             RAISE EXCEPTION 'Não é possível atender o número de vagas solicitadas';
           END IF;
-          IF requested_vacancies = 0 THEN 
-            RAISE EXCEPTION 'Não é possível atualizar o pedido para a mesma quantidade de pessoas que já contém no pacote';
-          END IF;
           IF NEW.amount_people < OLD.amount_people THEN
             UPDATE tours SET vacancies = vacancies + (OLD.amount_people - NEW.amount_people)
               WHERE id = NEW.tour_id;
