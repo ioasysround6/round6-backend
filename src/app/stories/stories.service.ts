@@ -23,6 +23,8 @@ export class StoriesService {
         'stories.mainActivities',
         'stories.curiosities',
         'stories.photo',
+        'stories.createdAt',
+        'stories.updatedAt',
       ])
       .getMany();
   }
@@ -39,6 +41,8 @@ export class StoriesService {
           'stories.mainActivities',
           'stories.curiosities',
           'stories.photo',
+          'stories.createdAt',
+          'stories.updatedAt',
         ])
         .where(conditions)
         .getOne();

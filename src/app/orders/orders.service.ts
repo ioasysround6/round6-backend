@@ -25,6 +25,8 @@ export class OrdersService {
         .select([
           'orders.id',
           'orders.amountPeople',
+          'orders.createdAt',
+          'orders.updatedAt',
           'tour.id',
           'tour.communityName',
           'tour.description',

@@ -32,6 +32,8 @@ export class ToursService {
         'tours.photo1',
         'tours.photo2',
         'tours.photo3',
+        'tours.createdAt',
+        'tours.updatedAt',
       ])
       .getMany();
   }
@@ -53,6 +55,8 @@ export class ToursService {
           'tours.photo1',
           'tours.photo2',
           'tours.photo3',
+          'tours.createdAt',
+          'tours.updatedAt',
         ])
         .where(conditions)
         .getOne();
