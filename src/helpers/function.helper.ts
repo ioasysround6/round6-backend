@@ -8,8 +8,8 @@ import { OrdersEntity } from 'src/app/orders/orders.entity';
 import { UsersEntity } from 'src/app/users/users.entity';
 import { MessageHelper } from './message.helper';
 
-export const checkDuplicate = (role: UsersEntity) => {
-  if (role) {
+export const checkDuplicate = (duplicate: UsersEntity) => {
+  if (duplicate) {
     throw new ConflictException(MessageHelper.CONFLICT);
   }
 };
@@ -39,6 +39,12 @@ export const controlVacancies = (
 
 export const checkOrder = (order: OrdersEntity) => {
   if (!order) {
+    throw new NotFoundException(MessageHelper.NOT_FOUND);
+  }
+};
+
+export const checkUserExists = (user: UsersEntity) => {
+  if (!user) {
     throw new NotFoundException(MessageHelper.NOT_FOUND);
   }
 };

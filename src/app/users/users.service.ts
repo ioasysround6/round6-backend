@@ -1,12 +1,12 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
-import { checkDate, checkDuplicate } from 'src/helpers/function.helper';
+import {
+  checkDate,
+  checkDuplicate,
+  checkUserExists,
+} from 'src/helpers/function.helper';
 import { MessageHelper } from 'src/helpers/message.helper';
 import {
   createQueryBuilder,
@@ -36,6 +36,8 @@ export class UsersService {
         'users.birthDate',
         'users.photo',
         'users.role',
+        'users.createdAt',
+        'users.updatedAt',
       ])
       .getMany();
   }
@@ -54,8 +56,12 @@ export class UsersService {
           'users.birthDate',
           'users.photo',
           'users.role',
+          'users.createdAt',
+          'users.updatedAt',
           'orders.id',
           'orders.amountPeople',
+          'orders.createdAt',
+          'orders.updatedAt',
           'tour.id',
           'tour.communityName',
           'tour.description',
@@ -65,7 +71,6 @@ export class UsersService {
           'tour.hint',
           'tour.price',
           'tour.vacancies',
-          'tour.createdAt',
         ])
         .where(conditions)
         .getOne();
@@ -114,17 +119,21 @@ export class UsersService {
     conditions: FindConditions<UsersEntity>,
     data: UpdateUserDto,
   ) {
-    try {
-      const user = await this.userRepository.findOneOrFail(conditions);
-      const userOldPassword = user.password;
-      this.userRepository.merge(user, data);
-      if (userOldPassword !== user.password) {
-        user.password = hashSync(user.password, 10);
-      }
-      await this.userRepository.save(user);
-    } catch (error) {
-      throw new ConflictException(MessageHelper.CONFLICT);
+    const userExists = await createQueryBuilder(UsersEntity, 'users')
+      .select(['users.id'])
+      .where(conditions)
+      .getOne();
+    checkUserExists(userExists);
+    const { email } = data;
+    const verifyUser = await this.userRepository.findOne({ email });
+    checkDuplicate(verifyUser);
+    const user = await this.userRepository.findOneOrFail(conditions);
+    const userOldPassword = user.password;
+    this.userRepository.merge(user, data);
+    if (userOldPassword !== user.password) {
+      user.password = hashSync(user.password, 10);
     }
+    await this.userRepository.save(user);
   }
 
   async recoverPassword(
