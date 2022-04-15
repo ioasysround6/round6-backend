@@ -12,12 +12,10 @@ import { RegExHelper } from 'src/helpers/regex.helper';
 export class UpdateUserDto {
   @IsOptional()
   @IsString()
-  @Matches(RegExHelper.name, { message: MessageHelper.FIRST_NAME_VALID })
   firstName: string;
 
   @IsOptional()
   @IsString()
-  @Matches(RegExHelper.name, { message: MessageHelper.LAST_NAME_VALID })
   lastName: string;
 
   @IsOptional()
