@@ -21,6 +21,7 @@ export class ToursService {
     return await createQueryBuilder(ToursEntity, 'tours')
       .select([
         'tours.id',
+        'tours.tourName',
         'tours.communityName',
         'tours.description',
         'tours.accommodation',
@@ -44,6 +45,7 @@ export class ToursService {
       return await createQueryBuilder(ToursEntity, 'tours')
         .select([
           'tours.id',
+          'tours.tourName',
           'tours.communityName',
           'tours.description',
           'tours.accommodation',

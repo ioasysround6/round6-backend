@@ -5,6 +5,7 @@ export class CreateTours1648663528069 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE tours (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        tour_name varchar(255) NOT NULL,
         community_name varchar(255) NOT NULL,
         description text NOT NULL,
         accommodation text NOT NULL,

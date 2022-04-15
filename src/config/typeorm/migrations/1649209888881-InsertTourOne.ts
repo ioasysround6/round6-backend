@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-const communityName = 'Mãos na argila!';
+const tourName = 'Mãos na argila!';
+const communityName = 'Mato Serrado';
 const description =
   'Conheça de perto uma das comunidades tradicionais produtoras de artesanato de argila, Mato Serrado. Localizada em Crato, a 8 horas de Fortaleza, é uma comunidade centenária e um local fantástico repleto de figuras icônicas no artesanato cearense!';
 const accommodation =
@@ -12,15 +13,16 @@ const hint =
   'Leve roupas leves e que te protejam do sol Leve seus materiais individuais para evitar o uso de descartáveis, em respeito a natureza Tire muitas fotos mas não divulgue imagens das pessoas da comunidade sem a autorização delas Divirta-se bastante e não esqueça de postar o seu diário de viagem no nosso feed';
 const price = 600;
 const vacancies = 7;
-const photo1 = 'https://i.imgur.com/bxtO5TP.jpg';
+const photo1 = 'https://i.imgur.com/EKE6lmt.png';
 const photo2 = 'https://i.imgur.com/EJftyc4.jpg';
 const photo3 = 'https://i.imgur.com/Oa2gFW5.jpg';
 
 export class InsertTourOne1649209888881 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO tours(community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+      `INSERT INTO tours(tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
       [
+        tourName,
         communityName,
         description,
         accommodation,
@@ -38,8 +40,9 @@ export class InsertTourOne1649209888881 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM tours WHERE community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11`,
+      `DELETE FROM tours WHERE tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12`,
       [
+        tourName,
         communityName,
         description,
         accommodation,

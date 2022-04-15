@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-const communityName = 'Folhas, flores e frutos';
+const tourName = 'Folhas, flores e frutos';
+const communityName = 'Serra do Paraíso';
 const description =
   'Uma experiência imersiva no campo, perfeita para aqueles que procuram por uma viagem tranquila. Conheça quem são os responsáveis por levar o alimento à mesa do brasileiro diariamente, participando do cultivo e experimentando as delícias da terra! Esse passeio é feito na comunidade Serra do Paraíso, na cidade de Jacobina a 5h de Salvador.';
 const accommodation =
@@ -19,8 +20,9 @@ const photo3 = 'link da foto da comunidade Folhas, flores e frutos 3';
 export class InsertTourThree1649358400082 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO tours(community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+      `INSERT INTO tours(tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
       [
+        tourName,
         communityName,
         description,
         accommodation,
@@ -38,8 +40,9 @@ export class InsertTourThree1649358400082 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM tours WHERE community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11`,
+      `DELETE FROM tours WHERE tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12`,
       [
+        tourName,
         communityName,
         description,
         accommodation,

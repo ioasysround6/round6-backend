@@ -14,6 +14,9 @@ export class ToursEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column({ name: 'tour_name', length: '255' })
+  tourName: string;
+
   @Column({ name: 'community_name', length: '255' })
   communityName: string;
 

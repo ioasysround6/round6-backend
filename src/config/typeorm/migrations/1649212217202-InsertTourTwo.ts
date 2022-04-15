@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-const communityName = 'Sobre as águas';
+const tourName = 'Sobre as águas';
+const communityName = 'Anavilhanas e Araçari';
 const description =
   'Já imaginou viver em um barco na Amazônia? Uma experiência singular, para aqueles que são apaixonados pela natureza. Aprecie as mais belas paisagens da Floresta Amazônica, navegando através dos rios e afluentes.';
 const accommodation =
@@ -19,8 +20,9 @@ const photo3 = 'link da foto da comunidade Sobre as águas 3';
 export class InsertTourTwo1649212217202 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO tours(community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+      `INSERT INTO tours(tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
       [
+        tourName,
         communityName,
         description,
         accommodation,
@@ -38,8 +40,9 @@ export class InsertTourTwo1649212217202 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM tours WHERE community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11`,
+      `DELETE FROM tours WHERE tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12`,
       [
+        tourName,
         communityName,
         description,
         accommodation,

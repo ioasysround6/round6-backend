@@ -3,6 +3,10 @@ import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 export class CreateTourDto {
   @IsNotEmpty()
   @IsString()
+  tourName: string;
+
+  @IsNotEmpty()
+  @IsString()
   communityName: string;
 
   @IsNotEmpty()
