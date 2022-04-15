@@ -10,7 +10,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { RolesGuard } from './guards/roles.guard';
-import { TokensModule } from 'src/app/tokens/tokens.module';
+//import { TokensModule } from 'src/app/tokens/tokens.module';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { TokensModule } from 'src/app/tokens/tokens.module';
       privateKey: process.env.JWT_SECRET_KEY,
       signOptions: { expiresIn: '86400s' },
     }),
-    TokensModule,
+    //TokensModule,
   ],
   controllers: [AuthController],
   providers: [
