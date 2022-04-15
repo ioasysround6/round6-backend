@@ -5,6 +5,7 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { OrdersEntity } from 'src/app/orders/orders.entity';
+import { PaymentsEntity } from 'src/app/payments/payments.entity';
 import { UsersEntity } from 'src/app/users/users.entity';
 import { MessageHelper } from './message.helper';
 
@@ -47,4 +48,22 @@ export const checkUserExists = (user: UsersEntity) => {
   if (!user) {
     throw new NotFoundException(MessageHelper.NOT_FOUND);
   }
+};
+
+export const checkPaymentsExists = (payment: PaymentsEntity) => {
+  if (!payment) {
+    throw new NotFoundException(MessageHelper.NOT_FOUND);
+  }
+};
+
+export const subtractValues = (valor1: number, valor2: number) => {
+  return valor1 - valor2;
+};
+
+export const multiplyValues = (valor1: number, valor2: number) => {
+  return valor1 * valor2;
+};
+
+export const divideValues = (valor1: number, valor2: number) => {
+  return valor1 / valor2;
 };
