@@ -11,6 +11,9 @@ import { LoggerInterceptor } from './config/interceptors/logger.interceptor';
 import { OrdersModule } from './app/orders/orders.module';
 import { ToursModule } from './app/tours/tours.module';
 import { StoriesModule } from './app/stories/stories.module';
+import { PaymentsModule } from './app/payments/payments.module';
+import { CheckoutsModule } from './app/checkouts/checkouts.module';
+import { TokensModule } from './app/tokens/tokens.module';
 
 @Module({
   imports: [
@@ -39,6 +42,9 @@ import { StoriesModule } from './app/stories/stories.module';
     OrdersModule,
     ToursModule,
     StoriesModule,
+    PaymentsModule,
+    CheckoutsModule,
+    TokensModule,
   ],
   controllers: [],
   providers: [
