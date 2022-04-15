@@ -13,9 +13,9 @@ const hint =
   'Leve roupas leves e que te protejam do sol Leve seus materiais individuais para evitar o uso de descartáveis, em respeito a natureza Tire muitas fotos mas não divulgue imagens das pessoas da comunidade sem a autorização delas Divirta-se bastante e não esqueça de postar o seu diário de viagem no nosso feed';
 const price = 500;
 const vacancies = 10;
-const photo1 = 'link da foto da comunidade Folhas, flores e frutos';
-const photo2 = 'link da foto da comunidade Folhas, flores e frutos 2';
-const photo3 = 'link da foto da comunidade Folhas, flores e frutos 3';
+const photo1 = 'https://i.imgur.com/QCuaxld.jpg';
+const photo2 = 'https://i.imgur.com/HYM58bl.jpg';
+const photo3 = 'https://i.imgur.com/sk7umAc.jpg';
 
 export class InsertTourThree1649358400082 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

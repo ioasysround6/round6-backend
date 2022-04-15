@@ -9,8 +9,8 @@ const mainActivities =
   'A comunidade de Serra do Paraíso vive da agricultura familiar, destacando-se principalmente o plantio de frutas, café e milho. Toda a família participa da atividade';
 const curiosities =
   'A comunidade tem origem desde a época da colonização no Brasil e carrega até hoje traços culturais muito fortes da sua origem. Todas as famílias são muito engajadas e são muito comuns as festas na comunidade com muita música e danças';
-const photo1 = 'link da foto da comunidade Serra do Paraíso';
-const photo2 = 'link da foto da comunidade Serra do Paraíso 2';
+const photo1 = 'https://i.imgur.com/eQiKNX7.png';
+const photo2 = 'https://i.imgur.com/o7YXZ3G.png';
 
 export class InsertStoryThree1649373119197 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

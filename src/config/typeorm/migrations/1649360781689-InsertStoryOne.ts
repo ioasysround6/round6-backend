@@ -9,8 +9,8 @@ const mainActivities =
   'Cerca de 60% dos moradores de Mato vivem exclusivamente da fabricação artesanal de peças de Argila. Você encontra desde pequenos utensílios (Vasos, panelas e filtros) até Carrancas de 2 metros de altura';
 const curiosities =
   'O museu Argilas Vivas é um ponto turístico da comunidade, onde você pode conhecer projetos locais da associação de produtores de artesanato de barro do Ceará. A comunidade também possui uma escola de música que utiliza instrumentos musicais feitos com argila';
-const photo1 = 'https://i.imgur.com/EJftyc4.jpg';
-const photo2 = 'link da foto de Mato Serrado 2';
+const photo1 = 'https://i.imgur.com/sXAMdo3.png';
+const photo2 = 'https://i.imgur.com/GNCmSzR.png';
 
 export class InsertStoryOne1649360781689 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

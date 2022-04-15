@@ -9,8 +9,8 @@ const mainActivities =
   'A comunidade de Araçari vive principalmente da pesca no Rio Negro e da produção de peças de artesanato de madeira que é extraído da própria região';
 const curiosities =
   'Um produto comercializado que garante a subsistência dos moradores locais são palitos de churrasco, que são produzidos também com recursos da região. A comunidade recebe o nome em homenagem à ave Araçari típica da região';
-const photo1 = 'link da foto da comunidade Araçari';
-const photo2 = 'link da foto da comunidade Araçari 2';
+const photo1 = 'https://i.imgur.com/cKmz4Nx.png';
+const photo2 = 'https://i.imgur.com/aENC1E6.png';
 
 export class InsertStoryTwo1649363788776 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

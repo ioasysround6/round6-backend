@@ -14,8 +14,8 @@ const hint =
 const price = 600;
 const vacancies = 7;
 const photo1 = 'https://i.imgur.com/EKE6lmt.png';
-const photo2 = 'https://i.imgur.com/EJftyc4.jpg';
-const photo3 = 'https://i.imgur.com/Oa2gFW5.jpg';
+const photo2 = 'https://i.imgur.com/0WbJLsJ.jpg';
+const photo3 = 'https://i.imgur.com/VzfYJsl.png';
 
 export class InsertTourOne1649209888881 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
