@@ -26,6 +26,13 @@ import { OrdersService } from './orders.service';
 export class OrdersController {
   constructor(private readonly orderService: OrdersService) {}
 
+  @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Get()
+  async seeAllOrders() {
+    return await this.orderService.seeAllOrders();
+  }
+
   @Roles(Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
@@ -41,7 +48,7 @@ export class OrdersController {
     return await this.orderService.createOrder(body, req);
   }
 
-  @Roles(Role.Tourist)
+  @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
@@ -52,7 +59,7 @@ export class OrdersController {
     return await this.orderService.updateOrder({ id }, body);
   }
 
-  @Roles(Role.Tourist)
+  @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
