@@ -23,5 +23,9 @@ export class CreateStoryDto {
 
   @IsNotEmpty()
   @IsString()
-  photo: string;
+  photo1: string;
+
+  @IsNotEmpty()
+  @IsString()
+  photo2: string;
 }

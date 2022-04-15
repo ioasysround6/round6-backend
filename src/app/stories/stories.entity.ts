@@ -30,8 +30,11 @@ export class StoriesEntity {
   @Column()
   curiosities: string;
 
-  @Column()
-  photo: string;
+  @Column({ length: '255' })
+  photo1: string;
+
+  @Column({ length: '255' })
+  photo2: string;
 
   @ManyToOne(() => UsersEntity, (user) => user.stories)
   @JoinColumn({ name: 'user_id' })

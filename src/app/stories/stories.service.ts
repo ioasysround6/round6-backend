@@ -22,7 +22,8 @@ export class StoriesService {
         'stories.localization',
         'stories.mainActivities',
         'stories.curiosities',
-        'stories.photo',
+        'stories.photo1',
+        'stories.photo2',
         'stories.createdAt',
         'stories.updatedAt',
       ])
@@ -40,7 +41,8 @@ export class StoriesService {
           'stories.localization',
           'stories.mainActivities',
           'stories.curiosities',
-          'stories.photo',
+          'stories.photo1',
+          'stories.photo2',
           'stories.createdAt',
           'stories.updatedAt',
         ])
