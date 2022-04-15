@@ -9,33 +9,36 @@ const mainActivities =
   'Cerca de 60% dos moradores de Mato vivem exclusivamente da fabricação artesanal de peças de Argila. Você encontra desde pequenos utensílios (Vasos, panelas e filtros) até Carrancas de 2 metros de altura';
 const curiosities =
   'O museu Argilas Vivas é um ponto turístico da comunidade, onde você pode conhecer projetos locais da associação de produtores de artesanato de barro do Ceará. A comunidade também possui uma escola de música que utiliza instrumentos musicais feitos com argila';
-const photo = 'https://i.imgur.com/EJftyc4.jpg';
+const photo1 = 'https://i.imgur.com/EJftyc4.jpg';
+const photo2 = 'link da foto de Mato Serrado 2';
 
 export class InsertStoryOne1649360781689 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo) VALUES($1, $2, $3, $4, $5, $6)`,
+      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo1, photo2) VALUES($1, $2, $3, $4, $5, $6, $7)`,
       [
         communityName,
         description,
         localization,
         mainActivities,
         curiosities,
-        photo,
+        photo1,
+        photo2,
       ],
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo = $1 $2, $3, $4, $5, $6`,
+      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo1, photo2 = $1 $2, $3, $4, $5, $6, $7`,
       [
         communityName,
         description,
         localization,
         mainActivities,
         curiosities,
-        photo,
+        photo1,
+        photo2,
       ],
     );
   }

@@ -9,33 +9,36 @@ const mainActivities =
   'A comunidade de Serra do Paraíso vive da agricultura familiar, destacando-se principalmente o plantio de frutas, café e milho. Toda a família participa da atividade';
 const curiosities =
   'A comunidade tem origem desde a época da colonização no Brasil e carrega até hoje traços culturais muito fortes da sua origem. Todas as famílias são muito engajadas e são muito comuns as festas na comunidade com muita música e danças';
-const photo = 'link da foto da comunidade Serra do Paraíso';
+const photo1 = 'link da foto da comunidade Serra do Paraíso';
+const photo2 = 'link da foto da comunidade Serra do Paraíso 2';
 
 export class InsertStoryThree1649373119197 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo) VALUES($1, $2, $3, $4, $5, $6)`,
+      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo1, photo2) VALUES($1, $2, $3, $4, $5, $6, $7)`,
       [
         communityName,
         description,
         localization,
         mainActivities,
         curiosities,
-        photo,
+        photo1,
+        photo2,
       ],
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo = $1 $2, $3, $4, $5, $6`,
+      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo1, photo2 = $1 $2, $3, $4, $5, $6, $7`,
       [
         communityName,
         description,
         localization,
         mainActivities,
         curiosities,
-        photo,
+        photo1,
+        photo2,
       ],
     );
   }

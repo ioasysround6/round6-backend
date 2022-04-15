@@ -9,33 +9,36 @@ const mainActivities =
   'A comunidade de Araçari vive principalmente da pesca no Rio Negro e da produção de peças de artesanato de madeira que é extraído da própria região';
 const curiosities =
   'Um produto comercializado que garante a subsistência dos moradores locais são palitos de churrasco, que são produzidos também com recursos da região. A comunidade recebe o nome em homenagem à ave Araçari típica da região';
-const photo = 'link da foto da comunidade Araçari';
+const photo1 = 'link da foto da comunidade Araçari';
+const photo2 = 'link da foto da comunidade Araçari 2';
 
 export class InsertStoryTwo1649363788776 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo) VALUES($1, $2, $3, $4, $5, $6)`,
+      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo1, photo2) VALUES($1, $2, $3, $4, $5, $6, $7)`,
       [
         communityName,
         description,
         localization,
         mainActivities,
         curiosities,
-        photo,
+        photo1,
+        photo2,
       ],
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo = $1 $2, $3, $4, $5, $6`,
+      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo1, photo2 = $1 $2, $3, $4, $5, $6, $7`,
       [
         communityName,
         description,
         localization,
         mainActivities,
         curiosities,
-        photo,
+        photo1,
+        photo2,
       ],
     );
   }
