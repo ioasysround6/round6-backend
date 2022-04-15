@@ -28,17 +28,7 @@ export class UsersService {
 
   async findAllUsers() {
     return await createQueryBuilder(UsersEntity, 'users')
-      .select([
-        'users.id',
-        'users.firstName',
-        'users.lastName',
-        'users.email',
-        'users.birthDate',
-        'users.photo',
-        'users.role',
-        'users.createdAt',
-        'users.updatedAt',
-      ])
+      .select(['users.id', 'users.firstName', 'users.lastName', 'users.photo'])
       .getMany();
   }
 
@@ -48,6 +38,8 @@ export class UsersService {
       return await createQueryBuilder(UsersEntity, 'users')
         .leftJoinAndSelect('users.orders', 'orders')
         .leftJoinAndSelect('orders.tour', 'tour')
+        .leftJoinAndSelect('orders.payment', 'payment')
+        .leftJoinAndSelect('orders.checkouts', 'checkouts')
         .select([
           'users.id',
           'users.firstName',
@@ -60,9 +52,11 @@ export class UsersService {
           'users.updatedAt',
           'orders.id',
           'orders.amountPeople',
+          'orders.totalCost',
           'orders.createdAt',
           'orders.updatedAt',
           'tour.id',
+          'tour.tourName',
           'tour.communityName',
           'tour.description',
           'tour.accommodation',
@@ -71,6 +65,14 @@ export class UsersService {
           'tour.hint',
           'tour.price',
           'tour.vacancies',
+          'payment.id',
+          'payment.method',
+          'checkouts.id',
+          'checkouts.firstName',
+          'checkouts.lastName',
+          'checkouts.email',
+          'checkouts.birthDate',
+          'checkouts.cpf',
         ])
         .where(conditions)
         .getOne();
