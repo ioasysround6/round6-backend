@@ -1,6 +1,15 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { checkOrder, controlVacancies } from 'src/helpers/function.helper';
+import {
+  checkOrder,
+  controlVacancies,
+  multiplyValues,
+  subtractValues,
+} from 'src/helpers/function.helper';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
 import { ToursService } from '../tours/tours.service';
@@ -16,18 +25,36 @@ export class OrdersService {
     private readonly tourService: ToursService,
   ) {}
 
+  async seeAllOrders() {
+    return await createQueryBuilder(OrdersEntity, 'orders')
+      .leftJoinAndSelect('orders.user', 'user')
+      .select([
+        'orders.id',
+        'orders.createdAt',
+        'orders.updatedAt',
+        'user.id',
+        'user.firstName',
+        'user.lastName',
+      ])
+      .getMany();
+  }
+
   async seeOneOrder(conditions: FindConditions<OrdersEntity>) {
     try {
       await this.orderRepository.findOneOrFail(conditions);
       return await createQueryBuilder(OrdersEntity, 'orders')
         .leftJoinAndSelect('orders.tour', 'tour')
         .leftJoinAndSelect('orders.user', 'user')
+        .leftJoinAndSelect('orders.payment', 'payment')
+        .leftJoinAndSelect('orders.checkouts', 'checkouts')
         .select([
           'orders.id',
           'orders.amountPeople',
+          'orders.totalCost',
           'orders.createdAt',
           'orders.updatedAt',
           'tour.id',
+          'tour.tourName',
           'tour.communityName',
           'tour.description',
           'tour.accommodation',
@@ -44,6 +71,13 @@ export class OrdersService {
           'user.lastName',
           'user.email',
           'user.birthDate',
+          'payment.id',
+          'payment.method',
+          'checkouts.firstName',
+          'checkouts.lastName',
+          'checkouts.email',
+          'checkouts.birthDate',
+          'checkouts.cpf',
         ])
         .where(conditions)
         .getOne();
@@ -52,11 +86,20 @@ export class OrdersService {
     }
   }
 
+  async checkOrderExists(conditions: FindConditions<OrdersEntity>) {
+    try {
+      return await this.orderRepository.findOneOrFail(conditions);
+    } catch (error) {
+      throw new BadRequestException(MessageHelper.UNIDENTIFIED_ORDER);
+    }
+  }
+
   async createOrder(data: CreateOrderDto, req: any) {
     const order = this.orderRepository.create(data);
     order.user = req.user.id;
     const tour = await this.tourService.checkTourExists(order.tour);
     controlVacancies(tour.vacancies, order.amountPeople);
+    order.totalCost = multiplyValues(tour.price, order.amountPeople);
     const savedOrder = await this.orderRepository.save(order);
     savedOrder.user = undefined;
     return savedOrder;
@@ -76,8 +119,9 @@ export class OrdersService {
     const oldAmount = order.amountPeople;
     this.orderRepository.merge(order, data);
     const newAmount = order.amountPeople;
-    const requestedVacancies = newAmount - oldAmount;
+    const requestedVacancies = subtractValues(newAmount, oldAmount);
     controlVacancies(tour.vacancies, requestedVacancies);
+    order.totalCost = multiplyValues(tour.price, newAmount);
     await this.orderRepository.save(order);
   }
 

@@ -5,9 +5,13 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { CheckoutsEntity } from '../checkouts/checkouts.entity';
+import { PaymentsEntity } from '../payments/payments.entity';
 import { ToursEntity } from '../tours/tours.entity';
 import { UsersEntity } from '../users/users.entity';
 
@@ -18,6 +22,15 @@ export class OrdersEntity {
 
   @Column({ name: 'amount_people' })
   amountPeople: number;
+
+  @Column({ name: 'total_cost' })
+  totalCost: number;
+
+  @OneToOne(() => PaymentsEntity, (payment) => payment.order)
+  payment: PaymentsEntity;
+
+  @OneToMany(() => CheckoutsEntity, (checkouts) => checkouts.order)
+  checkouts: CheckoutsEntity[];
 
   @ManyToOne(() => UsersEntity, (user) => user.orders)
   @JoinColumn({ name: 'user_id' })
