@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { OrdersEntity } from 'src/app/orders/orders.entity';
 import { PaymentsEntity } from 'src/app/payments/payments.entity';
+import { StoriesEntity } from 'src/app/stories/stories.entity';
 import { UsersEntity } from 'src/app/users/users.entity';
 import { MessageHelper } from './message.helper';
 
@@ -46,6 +47,12 @@ export const checkOrder = (order: OrdersEntity) => {
 
 export const checkUserExists = (user: UsersEntity) => {
   if (!user) {
+    throw new NotFoundException(MessageHelper.NOT_FOUND);
+  }
+};
+
+export const checkStoriesExists = (story: StoriesEntity) => {
+  if (!story) {
     throw new NotFoundException(MessageHelper.NOT_FOUND);
   }
 };
