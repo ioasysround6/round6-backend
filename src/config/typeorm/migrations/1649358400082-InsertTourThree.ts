@@ -20,8 +20,9 @@ const photo3 = 'https://i.imgur.com/sk7umAc.jpg';
 export class InsertTourThree1649358400082 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO tours(tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
+      `INSERT INTO tours(id, tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
       [
+        process.env.ID_TOUR_THREE,
         tourName,
         communityName,
         description,
@@ -40,8 +41,9 @@ export class InsertTourThree1649358400082 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM tours WHERE tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12`,
+      `DELETE FROM tours WHERE id, tour_name, community_name, description, accommodation, activities, travel_date, hint, price, vacancies, photo1, photo2, photo3 = $1 $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13`,
       [
+        process.env.ID_TOUR_THREE,
         tourName,
         communityName,
         description,

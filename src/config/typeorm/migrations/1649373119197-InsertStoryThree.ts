@@ -15,7 +15,7 @@ const photo2 = 'https://i.imgur.com/o7YXZ3G.png';
 export class InsertStoryThree1649373119197 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo1, photo2) VALUES($1, $2, $3, $4, $5, $6, $7)`,
+      `INSERT INTO stories(community_name, description, localization, main_activities, curiosities, photo1, photo2, tour_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`,
       [
         communityName,
         description,
@@ -24,13 +24,14 @@ export class InsertStoryThree1649373119197 implements MigrationInterface {
         curiosities,
         photo1,
         photo2,
+        process.env.ID_TOUR_THREE,
       ],
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo1, photo2 = $1 $2, $3, $4, $5, $6, $7`,
+      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo1, photo2, tour_id = $1 $2, $3, $4, $5, $6, $7, $8`,
       [
         communityName,
         description,
@@ -39,6 +40,7 @@ export class InsertStoryThree1649373119197 implements MigrationInterface {
         curiosities,
         photo1,
         photo2,
+        process.env.ID_TOUR_THREE,
       ],
     );
   }
