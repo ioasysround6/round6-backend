@@ -36,7 +36,7 @@ export class OrdersEntity {
   @JoinColumn({ name: 'user_id' })
   user: UsersEntity;
 
-  @ManyToOne(() => ToursEntity, (tour) => tour.orders)
+  @ManyToOne(() => ToursEntity, (tour) => tour.orders, { cascade: false })
   @JoinColumn({ name: 'tour_id' })
   tour: ToursEntity;
 

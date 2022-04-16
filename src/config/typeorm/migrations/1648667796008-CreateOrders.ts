@@ -13,7 +13,7 @@ export class CreateOrders1648667796008 implements MigrationInterface {
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
         deleted_at timestamp,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (tour_id) REFERENCES tours(id)  
+        FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE SET NULL 
       );
     `);
   }

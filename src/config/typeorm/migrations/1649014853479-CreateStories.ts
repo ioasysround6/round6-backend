@@ -12,11 +12,11 @@ export class CreateStories1649014853479 implements MigrationInterface {
         curiosities text,
         photo1 varchar(255) NOT NULL,
         photo2 varchar(255) NOT NULL,
-        user_id UUID,
+        tour_id UUID,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
         deleted_at timestamp,
-        FOREIGN KEY (user_id) REFERENCES users(id)
+        FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE SET NULL
       );
     `);
   }

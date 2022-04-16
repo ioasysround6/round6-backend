@@ -4,11 +4,11 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
-  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UsersEntity } from '../users/users.entity';
+import { ToursEntity } from '../tours/tours.entity';
 
 @Entity({ name: 'stories' })
 export class StoriesEntity {
@@ -36,9 +36,9 @@ export class StoriesEntity {
   @Column({ length: '255' })
   photo2: string;
 
-  @ManyToOne(() => UsersEntity, (user) => user.stories)
-  @JoinColumn({ name: 'user_id' })
-  user: UsersEntity;
+  @OneToOne(() => ToursEntity, (tour) => tour.story, { cascade: false })
+  @JoinColumn({ name: 'tour_id' })
+  tour: ToursEntity;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
