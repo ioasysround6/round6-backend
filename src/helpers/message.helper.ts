@@ -16,6 +16,7 @@ export const MessageHelper = {
   NOT_FOUND: 'Infelizmente, a página buscada não foi encontrada',
   UNIDENTIFIED_TOUR: 'Passeio turístico não identificado',
   UNIDENTIFIED_ORDER: 'Pedido de compra não identificado',
+  UNIDENTIFIED_USER: 'Usuário não identificado',
   FORBIDDEN: 'Privilégios insuficientes para acessar a página',
   CONFLICT: 'Esse email já existe',
   UNAVAILABLE_VACANCIES: 'Não é possível atender o número de vagas solicitadas',

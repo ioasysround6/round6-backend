@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
@@ -88,7 +92,7 @@ export class UsersService {
     try {
       return await this.userRepository.findOneOrFail(conditions, options);
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new UnauthorizedException(MessageHelper.UNIDENTIFIED_USER);
     }
   }
 
