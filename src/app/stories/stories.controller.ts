@@ -9,7 +9,6 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
-  Req,
   UseGuards,
 } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
@@ -40,8 +39,8 @@ export class StoriesController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async createStory(@Body() body: CreateStoryDto, @Req() req: any) {
-    return await this.storyService.createStory(body, req);
+  async createStory(@Body() body: CreateStoryDto) {
+    return await this.storyService.createStory(body);
   }
 
   @Roles(Role.Admin)
@@ -52,7 +51,7 @@ export class StoriesController {
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateStoryDto,
   ) {
-    return await this.storyService.updateStory(id, body);
+    return await this.storyService.updateStory({ id }, body);
   }
 
   @Roles(Role.Admin)
