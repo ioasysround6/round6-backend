@@ -4,11 +4,13 @@ import {
   DeleteDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Role } from '../../config/enum/role.enum';
 import { OrdersEntity } from '../orders/orders.entity';
+import { TokensEntity } from '../tokens/tokens.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -35,6 +37,9 @@ export class UsersEntity {
 
   @Column({ type: 'enum', enum: Role, default: Role.Tourist })
   role: Role;
+
+  @OneToOne(() => TokensEntity, (token) => token.user)
+  token: TokensEntity;
 
   @OneToMany(() => OrdersEntity, (orders) => orders.user)
   orders: OrdersEntity[];
