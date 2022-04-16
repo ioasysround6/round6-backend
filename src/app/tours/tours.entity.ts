@@ -4,10 +4,12 @@ import {
   DeleteDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { OrdersEntity } from '../orders/orders.entity';
+import { StoriesEntity } from '../stories/stories.entity';
 
 @Entity({ name: 'tours' })
 export class ToursEntity {
@@ -49,6 +51,9 @@ export class ToursEntity {
 
   @Column({ length: '255', nullable: true })
   photo3: string;
+
+  @OneToOne(() => StoriesEntity, (story) => story.tour)
+  story: StoriesEntity;
 
   @OneToMany(() => OrdersEntity, (orders) => orders.tour)
   orders: OrdersEntity[];

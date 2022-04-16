@@ -43,6 +43,7 @@ export class ToursService {
     try {
       await this.tourRepository.findOneOrFail(conditions);
       return await createQueryBuilder(ToursEntity, 'tours')
+        .leftJoinAndSelect('tours.story', 'story')
         .select([
           'tours.id',
           'tours.tourName',
@@ -59,6 +60,16 @@ export class ToursService {
           'tours.photo3',
           'tours.createdAt',
           'tours.updatedAt',
+          'story.id',
+          'story.communityName',
+          'story.description',
+          'story.localization',
+          'story.mainActivities',
+          'story.curiosities',
+          'story.photo1',
+          'story.photo2',
+          'story.createdAt',
+          'story.updatedAt',
         ])
         .where(conditions)
         .getOne();
