@@ -9,7 +9,6 @@ import {
 } from 'typeorm';
 import { Role } from '../../config/enum/role.enum';
 import { OrdersEntity } from '../orders/orders.entity';
-import { StoriesEntity } from '../stories/stories.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -39,9 +38,6 @@ export class UsersEntity {
 
   @OneToMany(() => OrdersEntity, (orders) => orders.user)
   orders: OrdersEntity[];
-
-  @OneToMany(() => StoriesEntity, (stories) => stories.user)
-  stories: StoriesEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
