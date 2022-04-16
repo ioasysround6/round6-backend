@@ -13,6 +13,7 @@ import {
 import { MessageHelper } from 'src/helpers/message.helper';
 import { createQueryBuilder, FindConditions, Repository } from 'typeorm';
 import { ToursService } from '../tours/tours.service';
+import { UsersService } from '../users/users.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-orders.dto';
 import { OrdersEntity } from './orders.entity';
@@ -23,6 +24,7 @@ export class OrdersService {
     @InjectRepository(OrdersEntity)
     private readonly orderRepository: Repository<OrdersEntity>,
     private readonly tourService: ToursService,
+    private readonly userService: UsersService,
   ) {}
 
   async seeAllOrders() {
@@ -96,6 +98,7 @@ export class OrdersService {
 
   async createOrder(data: CreateOrderDto, req: any) {
     const order = this.orderRepository.create(data);
+    await this.userService.checkUser(req.user.id);
     order.user = req.user.id;
     const tour = await this.tourService.checkTourExists(order.tour);
     controlVacancies(tour.vacancies, order.amountPeople);
