@@ -125,15 +125,14 @@ export class UsersService {
     conditions: FindConditions<UsersEntity>,
     data: UpdateUserDto,
   ) {
-    const userExists = await createQueryBuilder(UsersEntity, 'users')
-      .select(['users.id'])
+    const user = await createQueryBuilder(UsersEntity, 'users')
+      .select(['users.id', 'users.password'])
       .where(conditions)
       .getOne();
-    checkUserExists(userExists);
+    checkUserExists(user);
     const { email } = data;
     const verifyUser = await this.userRepository.findOne({ email });
     checkDuplicate(verifyUser);
-    const user = await this.userRepository.findOneOrFail(conditions);
     const userOldPassword = user.password;
     this.userRepository.merge(user, data);
     if (userOldPassword !== user.password) {
