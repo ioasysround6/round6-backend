@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsUUID } from 'class-validator';
+import { ToursEntity } from 'src/app/tours/tours.entity';
 
 export class CreateStoryDto {
   @IsNotEmpty()
@@ -28,4 +29,8 @@ export class CreateStoryDto {
   @IsNotEmpty()
   @IsString()
   photo2: string;
+
+  @IsNotEmpty()
+  @IsUUID()
+  tour: ToursEntity;
 }
