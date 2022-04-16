@@ -14,7 +14,7 @@ export class CreateCheckouts1649629621060 implements MigrationInterface {
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
         deleted_at timestamp,
-        FOREIGN KEY (order_id) REFERENCES orders(id)
+        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
       );
     `);
   }

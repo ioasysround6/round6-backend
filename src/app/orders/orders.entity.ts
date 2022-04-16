@@ -32,7 +32,7 @@ export class OrdersEntity {
   @OneToMany(() => CheckoutsEntity, (checkouts) => checkouts.order)
   checkouts: CheckoutsEntity[];
 
-  @ManyToOne(() => UsersEntity, (user) => user.orders)
+  @ManyToOne(() => UsersEntity, (user) => user.orders, { cascade: true })
   @JoinColumn({ name: 'user_id' })
   user: UsersEntity;
 

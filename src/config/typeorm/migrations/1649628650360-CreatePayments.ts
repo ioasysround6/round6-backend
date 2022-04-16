@@ -17,7 +17,7 @@ export class CreatePayments1649628650360 implements MigrationInterface {
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
         deleted_at timestamp,
-        FOREIGN KEY (order_id) REFERENCES orders(id) 
+        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
       );
     `);
   }

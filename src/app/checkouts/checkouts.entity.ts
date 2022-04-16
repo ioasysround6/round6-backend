@@ -31,7 +31,7 @@ export class CheckoutsEntity {
   @Column({ length: '255', transformer: dataEncryption })
   cpf: string;
 
-  @ManyToOne(() => OrdersEntity, (order) => order.checkouts)
+  @ManyToOne(() => OrdersEntity, (order) => order.checkouts, { cascade: true })
   @JoinColumn({ name: 'order_id' })
   order: OrdersEntity;
 

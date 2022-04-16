@@ -42,7 +42,7 @@ export class PaymentsEntity {
   })
   securityCode: string;
 
-  @OneToOne(() => OrdersEntity, (order) => order.payment)
+  @OneToOne(() => OrdersEntity, (order) => order.payment, { cascade: true })
   @JoinColumn({ name: 'order_id' })
   order: OrdersEntity;
 
