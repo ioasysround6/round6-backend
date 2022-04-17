@@ -11,7 +11,7 @@ export class CreatePayments1649628650360 implements MigrationInterface {
         installment_value decimal(10, 2),
         card_number varchar(255),
         printed_name varchar(255),
-        due_date varchar(250),
+        due_date varchar(255),
         security_code varchar(255),
         order_id UUID,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
