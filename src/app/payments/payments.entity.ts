@@ -32,8 +32,8 @@ export class PaymentsEntity {
   @Column({ name: 'printed_name', nullable: true, transformer: dataEncryption })
   printedName: string;
 
-  @Column({ name: 'due_date', nullable: true })
-  dueDate: Date;
+  @Column({ name: 'due_date', nullable: true, transformer: dataEncryption })
+  dueDate: string;
 
   @Column({
     name: 'security_code',
