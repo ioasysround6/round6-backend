@@ -5,7 +5,9 @@ const cardNumber = /^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$/;
 
 const printedName = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\-'. ]+$/;
 
-const securityCode = /^[0-9]{3}/;
+const dueDate = /^(((0[123456789]|10|11|12)([/])([0-9][0-9])))$/;
+
+const securityCode = /^[0-9]{3}$/;
 
 const cpf = /^([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/;
 
@@ -15,4 +17,5 @@ export const RegExHelper = {
   securityCode,
   printedName,
   cpf,
+  dueDate,
 };

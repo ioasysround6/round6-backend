@@ -10,6 +10,7 @@ export const MessageHelper = {
     'Número de cartão de crédito deve ser no formato: 0000 0000 0000 0000',
   PRINTED_NAME_VALID:
     'Nome impresso deve ser apenas letras, aspas simples, hífen e/ou ponto',
+  DUE_DATE_VALID: 'Data de vencimento deve ser no formato: mm/aa. Ex.: 12/25',
   SECURITY_CODE_VALID: 'Código de segurança deve ser no formato: 000',
   CPF_VALID: 'O cpf deve conter 11 números',
   BAD_REQUEST: 'Alguma informação está errada',
