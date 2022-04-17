@@ -23,20 +23,36 @@ export class PaymentsEntity {
   @Column({ nullable: true })
   installments: number;
 
-  @Column({ name: 'installment_value' })
+  @Column({ name: 'installment_value', nullable: true })
   installmentValue: number;
 
-  @Column({ name: 'card_number', nullable: true, transformer: dataEncryption })
+  @Column({
+    name: 'card_number',
+    length: '255',
+    nullable: true,
+    transformer: dataEncryption,
+  })
   cardNumber: string;
 
-  @Column({ name: 'printed_name', nullable: true, transformer: dataEncryption })
+  @Column({
+    name: 'printed_name',
+    length: '255',
+    nullable: true,
+    transformer: dataEncryption,
+  })
   printedName: string;
 
-  @Column({ name: 'due_date', nullable: true, transformer: dataEncryption })
+  @Column({
+    name: 'due_date',
+    length: '255',
+    nullable: true,
+    transformer: dataEncryption,
+  })
   dueDate: string;
 
   @Column({
     name: 'security_code',
+    length: '255',
     nullable: true,
     transformer: dataEncryption,
   })
