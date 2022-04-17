@@ -1,8 +1,7 @@
 import {
-  IsDateString,
   IsEnum,
+  IsInt,
   IsNotEmpty,
-  IsNumber,
   IsOptional,
   IsString,
   IsUUID,
@@ -20,7 +19,7 @@ export class CreatePaymentDto {
   method: Method;
 
   @IsOptional()
-  @IsNumber()
+  @IsInt()
   @Min(1)
   installments: number;
 
@@ -37,8 +36,9 @@ export class CreatePaymentDto {
   printedName: string;
 
   @IsOptional()
-  @IsDateString()
-  dueDate: Date;
+  @IsString()
+  @Matches(RegExHelper.dueDate, { message: MessageHelper.DUE_DATE_VALID })
+  dueDate: string;
 
   @IsOptional()
   @IsString()

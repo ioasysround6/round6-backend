@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateTourDto {
   @IsNotEmpty()
@@ -34,7 +40,7 @@ export class CreateTourDto {
   price: number;
 
   @IsNotEmpty()
-  @IsNumber()
+  @IsInt()
   vacancies: number;
 
   @IsNotEmpty()
