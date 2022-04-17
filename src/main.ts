@@ -9,7 +9,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3000;
   const run = new Logger('NestApplication');
   const logger = WinstonModule.createLogger(winstonTransport);
-  const app = await NestFactory.create(AppModule, { logger });
+  const app = await NestFactory.create(AppModule, { logger, cors: true });
   app.use(helmet());
   app.useGlobalPipes(
     new ValidationPipe({
