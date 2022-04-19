@@ -34,6 +34,7 @@ export class DiaresService {
         'users.id',
         'users.firstName',
         'users.lastName',
+        'users.photo',
         'comments.id',
         'comments.content',
         'comments.createdAt',
@@ -41,6 +42,7 @@ export class DiaresService {
         'user.id',
         'user.firstName',
         'user.lastName',
+        'user.photo',
       ])
       .getMany();
   }
@@ -62,6 +64,7 @@ export class DiaresService {
           'users.id',
           'users.firstName',
           'users.lastName',
+          'users.photo',
           'comments.id',
           'comments.content',
           'comments.createdAt',
@@ -69,6 +72,7 @@ export class DiaresService {
           'user.id',
           'user.firstName',
           'user.lastName',
+          'user.photo',
         ])
         .where(conditions)
         .getOne();

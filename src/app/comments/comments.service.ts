@@ -19,16 +19,17 @@ export class CommentsService {
 
   async seeAllComments() {
     return await createQueryBuilder(CommentsEntity, 'comments')
-      .leftJoinAndSelect('comments.user', 'user')
+      .leftJoinAndSelect('comments.user', 'users')
       .leftJoinAndSelect('comments.diary', 'diary')
       .select([
         'comments.id',
         'comments.content',
         'comments.createdAt',
         'comments.updatedAt',
-        'user.id',
-        'user.firstName',
-        'user.lastName',
+        'users.id',
+        'users.firstName',
+        'users.lastName',
+        'users.photo',
         'diary.id',
         'diary.title',
       ])
@@ -39,16 +40,17 @@ export class CommentsService {
     try {
       await this.commentRepository.findOneOrFail(conditions);
       return await createQueryBuilder(CommentsEntity, 'comments')
-        .leftJoinAndSelect('comments.user', 'user')
+        .leftJoinAndSelect('comments.user', 'users')
         .leftJoinAndSelect('comments.diary', 'diary')
         .select([
           'comments.id',
           'comments.content',
           'comments.createdAt',
           'comments.updatedAt',
-          'user.id',
-          'user.firstName',
-          'user.lastName',
+          'users.id',
+          'users.firstName',
+          'users.lastName',
+          'users.photo',
           'diary.id',
           'diary.title',
         ])
