@@ -9,6 +9,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Role } from '../../config/enum/role.enum';
+import { CommentsEntity } from '../comments/comments.entity';
+import { DiaresEntity } from '../diares/diares.entity';
 import { OrdersEntity } from '../orders/orders.entity';
 import { TokensEntity } from '../tokens/tokens.entity';
 
@@ -43,6 +45,12 @@ export class UsersEntity {
 
   @OneToMany(() => OrdersEntity, (orders) => orders.user)
   orders: OrdersEntity[];
+
+  @OneToMany(() => DiaresEntity, (diares) => diares.user)
+  diares: DiaresEntity[];
+
+  @OneToMany(() => CommentsEntity, (comments) => comments.user)
+  comments: CommentsEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

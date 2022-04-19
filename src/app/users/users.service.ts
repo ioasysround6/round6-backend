@@ -44,6 +44,7 @@ export class UsersService {
         .leftJoinAndSelect('orders.tour', 'tour')
         .leftJoinAndSelect('orders.payment', 'payment')
         .leftJoinAndSelect('orders.checkouts', 'checkouts')
+        .leftJoinAndSelect('users.diares', 'diares')
         .select([
           'users.id',
           'users.firstName',
@@ -77,6 +78,12 @@ export class UsersService {
           'checkouts.email',
           'checkouts.birthDate',
           'checkouts.cpf',
+          'diares.id',
+          'diares.title',
+          'diares.content',
+          'diares.photo',
+          'diares.createdAt',
+          'diares.updatedAt',
         ])
         .where(conditions)
         .getOne();
