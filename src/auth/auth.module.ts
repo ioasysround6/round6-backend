@@ -19,7 +19,7 @@ import { TokensModule } from 'src/app/tokens/tokens.module';
     PassportModule,
     JwtModule.register({
       privateKey: process.env.JWT_SECRET_KEY,
-      signOptions: { expiresIn: '86400s' },
+      signOptions: { expiresIn: process.env.JWT_EXPIRATION },
     }),
     TokensModule,
   ],
