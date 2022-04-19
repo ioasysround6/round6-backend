@@ -31,7 +31,7 @@ export class InsertStoryOne1649360781689 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo1, photo2, tour_id = $1 $2, $3, $4, $5, $6, $7, $8`,
+      `DELETE FROM stories WHERE community_name, description, localization, main_activities, curiosities, photo1, photo2, tour_id = $1, $2, $3, $4, $5, $6, $7, $8`,
       [
         communityName,
         description,
