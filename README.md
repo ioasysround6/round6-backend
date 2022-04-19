@@ -20,6 +20,13 @@ Por questões de segurança, foram definidas algumas variáveis de ambiente:
 ```bash
 # JWT token secret para autenticação
 JWT_SECRET_KEY=       =>   (LOCAL e HEROKU) EX.: cqf0a97Et+pp7qWIVJbOIWrSUo6DdUbkXjxV6ZWH3To=
+JWT_EXPIRATION=       =>   (LOCAL e HEROKU) EX.: 86400s
+
+# Número de segundos que cada solicitação durará no armazenamento
+THROTTLER_TTL=        =>   (LOCAL e HEROKU) EX.: 60
+
+# Número máximo de solicitações dentro do limite TTL
+THROTTLER_LIMIT=      =>   (LOCAL e HEROKU) EX.: 10
 
 # Conexão com o banco de dados
 DB_CONNECTION=        =>   (LOCAL e HEROKU) EX.: postgres
@@ -222,13 +229,22 @@ o produto e visualizar o feedback de outros usuários. No entanto, para realizar
 e o comentário na postagem do diário torna-se necessário o cadastro do turista. É importante destacar também que o 
 turista não tem privilégios suficientes para criar, atualizar ou deletar os passeios turísticos e as histórias das comunidades. 
 
-Obs.1: em relação às fotos dos usuários, dos passeios e das histórias, o ideal seria ter um sistema de upload para 
-permitir que elas sejam armazenadas normalmente. Porém, por não haver tempo hábil, adotou-se uma forma mais simples
-para adicionar as fotos. Elas foram hospedadas no site 'imgur', em que os links, em jpg e png, eram gerados para serem
-armazenados no banco de dados. Como isso não fica muito prático para os usuários, um dos próximos passos do projeto
-seria implementar um sistema de upload. 
+Obs.1: como nem todos os desenvolvedores do projeto utilizariam o refresh token, optou-se por deixar a duração do token 
+com o tempo de 86400 segundos (24 horas) para que os testes pudessem ser realizados, sem ter que ficar fazendo o login 
+repetidas vezes.
 
-Outro ponto importante é que a aplicação possuem alguns seeds, são eles: 1 admin, 2 turistas, 3 passeios turísticos e
+Obs.2: em relação às fotos dos usuários, dos passeios, das histórias e dos diários, o ideal seria ter um sistema de 
+upload para permitir que elas fossem armazenadas normalmente. Porém, por não haver tempo hábil, adotou-se uma forma mais 
+simples para adicionar as fotos. Elas foram hospedadas no site 'imgur', em que os links, em jpg e png, eram gerados 
+para serem armazenados no banco de dados. Como isso não fica muito prático para os usuários, um dos próximos passos do 
+projeto seria implementar um sistema de upload. 
+
+Obs.3: para adicionar uma foto no imgur não é necessário criar uma conta, acesse o site 'https://imgur.com', depois 
+clique em new post e escolha um  método para subir a imagem. Em seguida, passe o mouse na imagem upada, clique nos 3 pontinhos 
+no canto superior direito da imagem, selecione Get share links, copie o link gerado em BBCode (Forums) e remova as tags [img] e 
+[/img]. A imagem está pronta para ser armazenada! 
+
+Outro ponto importante é que a aplicação possui alguns seeds, são eles: 1 admin, 2 turistas, 3 passeios turísticos e
 3 histórias da comunidade. Isso foi feito para facilitar o fluxo do projeto e já aparecer os produtos, desde o início,
 nas telas do site e do aplicativo.
 
@@ -245,19 +261,21 @@ optar por fazer a compra pelo método de cartão de crédito, o usuário pode es
 dividir a compra. Feito isso, aparecerá a propriedade valor da parcela (installmentValue), que envolve a relação do
 custo total com a quantidade de parcelas escolhida pelo usuário. 
 
-Obs.2: nos campos de cartão de crédito, o ideal seria mandar os dados para um serviço específico, que faria as validações.
+Obs.4: nos campos de cartão de crédito, o ideal seria mandar os dados para um serviço específico, que faria as validações.
 Porém, como não houve tempo suficiente para fazer isso, foram usadas regex's simples. Não é muito adequado usá-las por
 conta do processo de manutenção, que se torna muito trabalhoso, já que pode haver várias alterações por parte das empresas
 bancárias. No caso do projeto, elas só foram utilizadas apenas para não receber qualquer valor nos testes (letras, caracteres
 especiais, etc). O padrão estabelecido na regex foi de 16 números.
 
-Obs.3: as opções de Insert, Update e Delete (que estão localizadas na trigger) permitem gerenciar automaticamente a
+Obs.5: as opções de Insert, Update e Delete (que estão localizadas na trigger) permitem gerenciar automaticamente a
 quantidade de vagas disponíveis em cada passeio turístico.
 
 Realizada a compra, o turista tem a possibilidade de relatar, posteriormente, a sua experiência no seu diário de viagem,
 além de fazer comentários nas postagens de outros turistas.
 
-Obs.4: ao deletar um usuário, todas as suas compras, os seus registros e as suas postagens são deletados também.
+Obs.6: ao deletar um usuário, todas as suas compras, os seus registros e as suas postagens nos diários são deletados 
+também. Apenas os comentários permanecem, a menos que o usuário os delete antes de excluir a conta.
+
 
 ## Segurança da API
 
