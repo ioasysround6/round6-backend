@@ -14,6 +14,8 @@ import { StoriesModule } from './app/stories/stories.module';
 import { PaymentsModule } from './app/payments/payments.module';
 import { CheckoutsModule } from './app/checkouts/checkouts.module';
 import { TokensModule } from './app/tokens/tokens.module';
+import { DiaresModule } from './app/diares/diares.module';
+import { CommentsModule } from './app/comments/comments.module';
 
 @Module({
   imports: [
@@ -34,8 +36,8 @@ import { TokensModule } from './app/tokens/tokens.module';
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
     } as TypeOrmModuleOptions),
     ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
+      ttl: parseInt(process.env.THROTTLER_TTL),
+      limit: parseInt(process.env.THROTTLER_LIMIT),
     }),
     UsersModule,
     AuthModule,
@@ -45,6 +47,8 @@ import { TokensModule } from './app/tokens/tokens.module';
     PaymentsModule,
     CheckoutsModule,
     TokensModule,
+    DiaresModule,
+    CommentsModule,
   ],
   controllers: [],
   providers: [
