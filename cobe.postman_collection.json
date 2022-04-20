@@ -1,0 +1,2995 @@
+{
+	"info": {
+		"_postman_id": "4eb35c63-65ce-4a43-8853-526c4d849210",
+		"name": "cobe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "FindAllUsers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNTEzMzQzYi03OTc0LTQwMTYtOGM5YS1jNGE1NGE5ODUwZjEiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM5NzQ0NywiZXhwIjoxNjUwNDgzODQ3fQ.djSh40U6hRfnBHJme1ijbC51S7OvWMOg-oobhZaUTq8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProfile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNTEzMzQzYi03OTc0LTQwMTYtOGM5YS1jNGE1NGE5ODUwZjEiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM5ODI0MCwiZXhwIjoxNjUwNDg0NjQwfQ.HJyulqCNEKdT_7tJzUTwzItWJ2zWZCjKp-Oy5Mv3yo4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Joel\",\r\n    \"lastName\": \"Santana\",\r\n    \"email\": \"joel@hotmail.com\",\r\n    \"password\": \"Joel@123\",\r\n    \"birthDate\": \"2014-04-30\",\r\n    \"photo\": \"link da foto de perfil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateAdmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3MjMzZjBmYy1jMTZmLTQ1MGUtYWJkMy1lZDdjYWFkM2MwNGIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTA0MTk5NDcsImV4cCI6MTY1MDUwNjM0N30.IdFcooD5rATT9I5Efl_IJm0l1N5N6F0_xePCgbhk0VM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Mario\",\r\n    \"lastName\": \"Souza\",\r\n    \"email\": \"mario@hotmail.com\",\r\n    \"password\": \"Mario@123\",\r\n    \"birthDate\": \"2008-04-05\",\r\n    \"photo\": \"link da foto de perfil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMWY2ODMxZi0wMTk5LTRiMTItOTY5OC0yNTc3MmM0NmM1MzciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk0NTIyODAsImV4cCI6MTY0OTQ1Mjc2MH0.9ReJpp8LdMp9xHZ04llrCcChZ6596iMOTAl11nwrF-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Lucas\",\r\n    \"lastName\": \"Alves\",\r\n    \"email\": \"lucas@hotmail.com\",\r\n    \"password\": \"Lucas@123\",\r\n    \"photo\": \"link da foto de perfil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RecoverPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMjQ0OTFhYy0xZGFhLTRlMjEtYjdhMi0wMmM4YzIyYWMyNTUiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY0OTQ1MjUwNiwiZXhwIjoxNjQ5NDUyOTg2fQ.4CX2vJeWrvNvBzdZHEft_omDuMOtmugDt-I2dgdPhwM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"Lucas@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMDZmNjUyZC04YzJiLTQ1M2YtOWQyZi0zYTlkNjVlNjc5MzIiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDEzOTYzNCwiZXhwIjoxNjUwMjI2MDM0fQ.A5AK_0s9n1ep5vAV8-ganFiUw_jmnrAY6dTmNZy6vbg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"paula@hotmail.com\",\r\n    \"password\": \"Paula@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tokens",
+					"item": [
+						{
+							"name": "RefreshToken",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YjE5OTU2OS1iYjJkLTRmOTgtYTUxOC03MzQ1Y2ExYjZkZWIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NDIxODAsImV4cCI6MTY1MDAyODU4MH0._wA6R_3kLO41Y2ZetSmlqGPQxsd8xgMy1Wl_QYXR4SM\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/tokens/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"tokens",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tours",
+					"item": [
+						{
+							"name": "SeeAllTours",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/tours",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"tours"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneTour",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/tours/8f98da35-1103-491c-9f6e-55bcec9f66e9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"tours",
+										"8f98da35-1103-491c-9f6e-55bcec9f66e9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateTour",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMTA4NTMxMi0zMmRkLTQzZjMtYjE5MC1hZmZjY2E4NmQyZTYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTA0MjA0NTQsImV4cCI6MTY1MDUwNjg1NH0.0KdkSnM46EK3F29m_2sHkgCwJ0XllgaYYyqoMVn84lw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tourName\": \"Passeio X\",\r\n    \"communityName\": \"Comunidade X\",\r\n    \"description\": \"Exposição da cultura artesanal no Ceará\",\r\n    \"accommodation\": \"Casa de Joana\",\r\n    \"activities\": \"Preparar vasos artesanais\",\r\n    \"travelDate\": \"03 de fevereiro de 2022\",\r\n    \"hint\": \"Leve protetor solar\",\r\n    \"price\": 105,\r\n    \"vacancies\": 10,\r\n    \"photo1\": \"link da foto do local\",\r\n    \"photo2\": \"link da foto 2 do local\",\r\n    \"photo3\": \"link da foto 3 do local\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/tours",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"tours"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateTour",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNGZhODY4NS01ZDJhLTQxZDgtYTMxYy0zMjkyODgxZjhiZGQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5OTI3MzksImV4cCI6MTY1MDA3OTEzOX0.BQH2y0aqsx6aT0GHZjLVXQRcrwmUlDmqxRgAffO-_Nk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tourName\": \"Passeio Y\",\r\n    \"communityName\": \"Comunidade Y\",\r\n    \"description\": \"Exposição da cultura artesanal no Ceará\",\r\n    \"accommodation\": \"Casa de Joana\",\r\n    \"activities\": \"Preparar vasos artesanais\",\r\n    \"travelDate\": \"12/09 até 22/09\",\r\n    \"hint\": \"Leve o protetor solar e repelente\",\r\n    \"price\": 165,\r\n    \"vacancies\": 12,\r\n    \"photo1\": \"link da foto do local\",\r\n    \"photo2\": \"link da foto 2 do local\",\r\n    \"photo3\": \"link da foto 3 do local\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/tours/aaf8a761-b6f0-40b2-8227-21c8f3a521b7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"tours",
+										"aaf8a761-b6f0-40b2-8227-21c8f3a521b7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteTour",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNGZhODY4NS01ZDJhLTQxZDgtYTMxYy0zMjkyODgxZjhiZGQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5OTI3MzksImV4cCI6MTY1MDA3OTEzOX0.BQH2y0aqsx6aT0GHZjLVXQRcrwmUlDmqxRgAffO-_Nk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/tours/aaf8a761-b6f0-40b2-8227-21c8f3a521b7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"tours",
+										"aaf8a761-b6f0-40b2-8227-21c8f3a521b7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "SeeAllOrders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMTA4NTMxMi0zMmRkLTQzZjMtYjE5MC1hZmZjY2E4NmQyZTYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTA0MjA0NTQsImV4cCI6MTY1MDUwNjg1NH0.0KdkSnM46EK3F29m_2sHkgCwJ0XllgaYYyqoMVn84lw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNTEzMzQzYi03OTc0LTQwMTYtOGM5YS1jNGE1NGE5ODUwZjEiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDQyMDcwMiwiZXhwIjoxNjUwNTA3MTAyfQ.gdgom4reyShUtFY6FXI3VHBbVQsoQEzo0civgCZMKnk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/orders/e5c0fb9d-1848-493b-990f-3cd3a4aef082",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders",
+										"e5c0fb9d-1848-493b-990f-3cd3a4aef082"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNTEzMzQzYi03OTc0LTQwMTYtOGM5YS1jNGE1NGE5ODUwZjEiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDQyMDcwMiwiZXhwIjoxNjUwNTA3MTAyfQ.gdgom4reyShUtFY6FXI3VHBbVQsoQEzo0civgCZMKnk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amountPeople\": 2,\r\n    \"tour\": \"8f98da35-1103-491c-9f6e-55bcec9f66e9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZjk4ZDU1Yi1kYWYyLTQ1YjItODlmNS1iNTgwMGI0NzFhOTkiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY0OTcwNTU2MCwiZXhwIjoxNjQ5NzkxOTYwfQ.qIyYSrHIg6FrShqXlarQ2WXpTvUPF-DEDXTrBugHhaU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amountPeople\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/orders/e5c0fb9d-1848-493b-990f-3cd3a4aef082",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders",
+										"e5c0fb9d-1848-493b-990f-3cd3a4aef082"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNTEzMzQzYi03OTc0LTQwMTYtOGM5YS1jNGE1NGE5ODUwZjEiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDQyMDcwMiwiZXhwIjoxNjUwNTA3MTAyfQ.gdgom4reyShUtFY6FXI3VHBbVQsoQEzo0civgCZMKnk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/orders/e5c0fb9d-1848-493b-990f-3cd3a4aef082",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders",
+										"e5c0fb9d-1848-493b-990f-3cd3a4aef082"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Stories",
+					"item": [
+						{
+							"name": "SeeAllStories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/stories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"stories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneStory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/stories/7cd89e67-a156-47cb-b4fa-9bfe6ceadebe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"stories",
+										"7cd89e67-a156-47cb-b4fa-9bfe6ceadebe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateStory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjODZlMzc3NS0xMTFhLTQ5YTUtOWMyMS1kMjVjOWY0ZDU2MDAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAxMjY0ODIsImV4cCI6MTY1MDIxMjg4Mn0.4k5nvnVZ8q0AKJofXG9E1jv1TvXG0uAXI44qcTUKvtI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"communityName\": \"Comunidade X\",\r\n    \"description\": \"Eles gostam de produzir objetos que representam a história local\",\r\n    \"localization\": \"Ceará\",\r\n    \"mainActivities\": \"Fazer vasos e pratos típicos da região\",\r\n    \"curiosities\": \"Produzem o melhor doce do Brasil\",\r\n    \"photo1\": \"link da foto da comunidade\",\r\n    \"photo2\": \"link da foto 2 da comunidade\",\r\n    \"tour\": \"8f98da35-1103-491c-9f6e-55bcec9f66e9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/stories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"stories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateStory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjODZlMzc3NS0xMTFhLTQ5YTUtOWMyMS1kMjVjOWY0ZDU2MDAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAxMjY0ODIsImV4cCI6MTY1MDIxMjg4Mn0.4k5nvnVZ8q0AKJofXG9E1jv1TvXG0uAXI44qcTUKvtI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"communityName\": \"Comunidade Y\",\r\n    \"description\": \"Eles gostam de produzir objetos que representam a história da reigão Nordeste\",\r\n    \"localization\": \"Sergipe\",\r\n    \"mainActivities\": \"Fazer vasos e pratos típicos da região\",\r\n    \"curiosities\": \"Produzem o melhor doce do Nordeste\",\r\n    \"photo1\": \"link foto da comunidade\",\r\n    \"photo2\": \"link foto 2 da comunidade\",\r\n    \"tour\": \"d461c896-cddc-4b22-98db-34b0e1a4fc6f\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/stories/3e77f1e3-871f-4275-893b-5bafb32a7f24",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"stories",
+										"3e77f1e3-871f-4275-893b-5bafb32a7f24"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteStory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNGZhODY4NS01ZDJhLTQxZDgtYTMxYy0zMjkyODgxZjhiZGQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5OTI3MzksImV4cCI6MTY1MDA3OTEzOX0.BQH2y0aqsx6aT0GHZjLVXQRcrwmUlDmqxRgAffO-_Nk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/stories/d2424710-4185-4e8a-aa09-ac6369b27775",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"stories",
+										"d2424710-4185-4e8a-aa09-ac6369b27775"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payments",
+					"item": [
+						{
+							"name": "SeeAllPayments",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNGZhODY4NS01ZDJhLTQxZDgtYTMxYy0zMjkyODgxZjhiZGQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5OTEyNjQsImV4cCI6MTY1MDA3NzY2NH0.HdQiV8QIywv7B1s3CXfOWdirvnz5vLhEEsjhmR7mruo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/payments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOnePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZDc2MzcxNy05MWZmLTRjZjEtYjVlZC02MTU3OWQxMjE2MzYiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY0OTk4ODM2NCwiZXhwIjoxNjUwMDc0NzY0fQ.qxeNjO2rxXkffXKfTy1zNhM_-BSmsr7nREDe-my7yDg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/payments/f5d808e9-f320-40a1-9aa0-1aff4931bad6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"payments",
+										"f5d808e9-f320-40a1-9aa0-1aff4931bad6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreatePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZmQ1ZjdjYi1lOWJiLTRiNDktYWU2YS03YjNhN2FmYzM4YzQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDE1NDMzNSwiZXhwIjoxNjUwMjQwNzM1fQ.C_F_4wLy57N6xro0gXID-Iv0KK2aEALInbSrGEGvjK0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"credit_card\",\r\n    \"installments\": 7,\r\n    \"cardNumber\": \"1232 9334 1234 1234\",\r\n    \"printedName\": \"LUCAS ALVES\",\r\n    \"dueDate\": \"12/25\",\r\n    \"securityCode\": \"111\",\r\n    \"order\": \"3e68bda6-e806-4c75-acae-af4e755bc79a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/payments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdatePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZmQ1ZjdjYi1lOWJiLTRiNDktYWU2YS03YjNhN2FmYzM4YzQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDE1NDMzNSwiZXhwIjoxNjUwMjQwNzM1fQ.C_F_4wLy57N6xro0gXID-Iv0KK2aEALInbSrGEGvjK0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"cash\",\r\n    \"installments\": 5,\r\n    \"cardNumber\": \"1234 4334 5555 1234\",\r\n    \"printedName\": \"JOSÉ SANTOS\",\r\n    \"dueDate\": \"11/26\",\r\n    \"securityCode\": \"222\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/payments/d0129163-bb99-42d4-81c2-302038577b66",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"payments",
+										"d0129163-bb99-42d4-81c2-302038577b66"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZDc2MzcxNy05MWZmLTRjZjEtYjVlZC02MTU3OWQxMjE2MzYiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY0OTk4ODM2NCwiZXhwIjoxNjUwMDc0NzY0fQ.qxeNjO2rxXkffXKfTy1zNhM_-BSmsr7nREDe-my7yDg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/payments/abcb347e-47e6-46de-b087-726d09d5f9d4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"payments",
+										"abcb347e-47e6-46de-b087-726d09d5f9d4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Checkouts",
+					"item": [
+						{
+							"name": "SeeAllCheckouts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YjE5OTU2OS1iYjJkLTRmOTgtYTUxOC03MzQ1Y2ExYjZkZWIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NTE4NTYsImV4cCI6MTY1MDAzODI1Nn0.CHoQEtA-xUON4RTfF9kgHU5kamvrNQetJ3sPDyutpZI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/checkouts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"checkouts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YjE5OTU2OS1iYjJkLTRmOTgtYTUxOC03MzQ1Y2ExYjZkZWIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NTE4NTYsImV4cCI6MTY1MDAzODI1Nn0.CHoQEtA-xUON4RTfF9kgHU5kamvrNQetJ3sPDyutpZI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/checkouts/638a6dd4-58d8-47d1-b645-96ed6ab43354",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"checkouts",
+										"638a6dd4-58d8-47d1-b645-96ed6ab43354"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YjE5OTU2OS1iYjJkLTRmOTgtYTUxOC03MzQ1Y2ExYjZkZWIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NTE4NTYsImV4cCI6MTY1MDAzODI1Nn0.CHoQEtA-xUON4RTfF9kgHU5kamvrNQetJ3sPDyutpZI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Luan\",\r\n    \"lastName\": \"Mota\",\r\n    \"email\": \"luan@hotmail.com\",\r\n    \"birthDate\": \"1987-04-08\",\r\n    \"cpf\": \"01253257529\",\r\n    \"order\": \"75df64b4-465e-4011-b7d3-016540639f19\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/checkouts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"checkouts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZDc2MzcxNy05MWZmLTRjZjEtYjVlZC02MTU3OWQxMjE2MzYiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY0OTk5MjUxMCwiZXhwIjoxNjUwMDc4OTEwfQ.ES6kBvGUKiwTIGAgqRuxgO2XqdOn7Y0hiFqHf2hiUFk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Jose\",\r\n    \"lastName\": \"Santos\",\r\n    \"email\": \"jose@hotmail.com\",\r\n    \"birthDate\": \"1998-04-08\",\r\n    \"cpf\": \"01253256929\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/checkouts/638a6dd4-58d8-47d1-b645-96ed6ab43354",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"checkouts",
+										"638a6dd4-58d8-47d1-b645-96ed6ab43354"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZDc2MzcxNy05MWZmLTRjZjEtYjVlZC02MTU3OWQxMjE2MzYiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY0OTk5MjUxMCwiZXhwIjoxNjUwMDc4OTEwfQ.ES6kBvGUKiwTIGAgqRuxgO2XqdOn7Y0hiFqHf2hiUFk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/checkouts/638a6dd4-58d8-47d1-b645-96ed6ab43354",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"checkouts",
+										"638a6dd4-58d8-47d1-b645-96ed6ab43354"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Diares",
+					"item": [
+						{
+							"name": "SeeAllDiares",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/diares",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"diares"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneDiary",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/diares/a3525af3-0caa-4fc0-978f-3b5fc74c248e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"diares",
+										"a3525af3-0caa-4fc0-978f-3b5fc74c248e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateDiary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZmQ1ZjdjYi1lOWJiLTRiNDktYWU2YS03YjNhN2FmYzM4YzQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDMyNzc2MiwiZXhwIjoxNjUwNDE0MTYyfQ.kNpRI5bzZUcnIpbYJjbcbxw_eSk8oOP_gVGvVU5JYkM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Fantástico!\",\r\n    \"content\": \"Viajei com minha família e fiquei admirado com a cultura da comunidade local\",\r\n    \"photo\": \"link da foto\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/diares",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"diares"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateDiary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZmQ1ZjdjYi1lOWJiLTRiNDktYWU2YS03YjNhN2FmYzM4YzQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDMyNTkxOCwiZXhwIjoxNjUwNDEyMzE4fQ.MIyeLa8u5jRM4lLYgQNYUuDPXJVDbUl5W7JrO6V2WHk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Estou encantado!\",\r\n    \"content\": \"Agora eu só quero fazer turismo de base comunitária. Nada se compara com essa experiência. Fenomenal!\",\r\n    \"photo\": \"link da foto\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/diares/f05937c5-d90f-4a6f-89e3-fa9550e25b8b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"diares",
+										"f05937c5-d90f-4a6f-89e3-fa9550e25b8b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteDiary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MGI4OWQ4Ni05OTlhLTQ2ODQtYmJiNC0xNjA3MjZiODRlNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAzMTk0NDEsImV4cCI6MTY1MDQwNTg0MX0.zzhJVnMzQHUQSGtwARffWLc1RqY94fHvTvdn6lC99yc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/diares/f05937c5-d90f-4a6f-89e3-fa9550e25b8b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"diares",
+										"f05937c5-d90f-4a6f-89e3-fa9550e25b8b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Comments",
+					"item": [
+						{
+							"name": "SeeAllComments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneComment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/comments/16543c8c-d426-4044-a8c2-b88bdae0b0c0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"comments",
+										"16543c8c-d426-4044-a8c2-b88bdae0b0c0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MGI4OWQ4Ni05OTlhLTQ2ODQtYmJiNC0xNjA3MjZiODRlNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAzMTk0NDEsImV4cCI6MTY1MDQwNTg0MX0.zzhJVnMzQHUQSGtwARffWLc1RqY94fHvTvdn6lC99yc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Amei o seu relato! Irei conhecer Mato Serrado na minha próxima viagem.\",\r\n    \"diary\": \"f05937c5-d90f-4a6f-89e3-fa9550e25b8b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTgxYzlmYS1hNjM5LTRlYWQtODUyNy1kOWI3ZjBiMTlmMjUiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDMyOTg4MywiZXhwIjoxNjUwNDE2MjgzfQ.IRyIaIS__6jR2YWv_wWt2Vav6IC9-UaHnBrRBwSV4vk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Show demais, fiquei na vontade de fazer essa viagem também\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/comments/9769213e-4a8b-444e-aaad-c64e70338260",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"comments",
+										"9769213e-4a8b-444e-aaad-c64e70338260"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTgxYzlmYS1hNjM5LTRlYWQtODUyNy1kOWI3ZjBiMTlmMjUiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDMyOTg4MywiZXhwIjoxNjUwNDE2MjgzfQ.IRyIaIS__6jR2YWv_wWt2Vav6IC9-UaHnBrRBwSV4vk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/comments/9769213e-4a8b-444e-aaad-c64e70338260",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"comments",
+										"9769213e-4a8b-444e-aaad-c64e70338260"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "herokuapp.com",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "FindAllUsers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3MjMzZjBmYy1jMTZmLTQ1MGUtYWJkMy1lZDdjYWFkM2MwNGIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTA0MTk5NDcsImV4cCI6MTY1MDUwNjM0N30.IdFcooD5rATT9I5Efl_IJm0l1N5N6F0_xePCgbhk0VM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/users",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProfile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNTEzMzQzYi03OTc0LTQwMTYtOGM5YS1jNGE1NGE5ODUwZjEiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDQwMDQ2MiwiZXhwIjoxNjUwNDg2ODYyfQ.nHsuEP0ZbwkaDWcURvipwtGjWpK4H4gRkkuZMN7Qexc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/users/profile",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Joel\",\r\n    \"lastName\": \"Santana\",\r\n    \"email\": \"joel@hotmail.com\",\r\n    \"password\": \"Joel@123\",\r\n    \"birthDate\": \"2008-04-19\",\r\n    \"photo\": \"link da foto do perfil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/users",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateAdmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3MjMzZjBmYy1jMTZmLTQ1MGUtYWJkMy1lZDdjYWFkM2MwNGIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTA0MTk5NDcsImV4cCI6MTY1MDUwNjM0N30.IdFcooD5rATT9I5Efl_IJm0l1N5N6F0_xePCgbhk0VM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Luana\",\r\n    \"lastName\": \"Gonçalves\",\r\n    \"email\": \"luana@hotmail.com\",\r\n    \"password\": \"Luana@123\",\r\n    \"birthDate\": \"2008-04-06\",\r\n    \"photo\": \"link da foto do perfil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/users/admin",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YTk5ODcwMi0wOTdlLTRhOGEtYWVhNi04NGNiZjAzZTQxMTkiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDE0NjYyNCwiZXhwIjoxNjUwMjMzMDI0fQ.jdlp2KNpgF3dp1QRAtEZ3pG_Yu3Bu7dc4tr5Q9xXoVI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Lucas\",\r\n    \"lastName\": \"Alves\",\r\n    \"email\": \"lucas@hotmail.com\",\r\n    \"password\": \"Lucas@123\",\r\n    \"photo\": \"link da foto do perfil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/users",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RecoverPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZmRmODVmYS0zYzMzLTRkNjctOGYyNi02N2U5NjlhZjMwZDUiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY0OTQ2MjA2OCwiZXhwIjoxNjQ5NDYyNTQ4fQ.HtfmDxq1Czr9OIGe3AfVzGuff8mhP2LdQvCUk3CJUdQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"JoelS@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/users/password",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNGRmYTVjMy1iZDNkLTRmMmYtYWIxMS04Mjg5ZGUzZDJjNTEiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDA1MzM0OSwiZXhwIjoxNjUwMTM5NzQ5fQ.GP4b4wFeR359uYJoARl_L6EhqcHSoPork0ancUJFZGc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/users",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"grace@hotmail.com\",\r\n    \"password\": \"Grace@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/auth/login",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tokens",
+					"item": [
+						{
+							"name": "RefreshToken",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmODI1ODhkNS02ZWYwLTQzMWYtOTE3Ny0xZTc5MGFjMDMzYjMiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM3OTUwMSwiZXhwIjoxNjUwNDY1OTAxfQ.uVpbKwdo6vcwsQeWZn36MzMd2hyn_SRAIwwo1WhEKfA\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/tokens/refresh",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"tokens",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tours",
+					"item": [
+						{
+							"name": "SeeAllTours",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/tours",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"tours"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneTour",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/tours/aaf8a761-b6f0-40b2-8227-21c8f3a521b7",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"tours",
+										"aaf8a761-b6f0-40b2-8227-21c8f3a521b7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateTour",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3M2E3NzU5My01MGE3LTQyODEtODM0MS1iNTAyNjkwMTU5ZWEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAwNTU4NTcsImV4cCI6MTY1MDE0MjI1N30.55EcFoIWAuWrMvSqFFbvjvAeXrGqfn9Z7actorgZsN0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tourName\": \"Passeio X\",\r\n    \"communityName\": \"Comunidade X\",\r\n    \"description\": \"Exposição da cultura artesanal no Ceará\",\r\n    \"accommodation\": \"Casa de Joana\",\r\n    \"activities\": \"Preparar vasos artesanais\",\r\n    \"travelDate\": \"03 de fevereiro de 2022\",\r\n    \"hint\": \"Leve protetor solar\",\r\n    \"price\": 105,\r\n    \"vacancies\": 10,\r\n    \"photo1\": \"link da foto do local\",\r\n    \"photo2\": \"link da foto 2 do local\",\r\n    \"photo3\": \"link da foto 3 do local\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/tours",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"tours"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateTour",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3M2E3NzU5My01MGE3LTQyODEtODM0MS1iNTAyNjkwMTU5ZWEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAwNTU4NTcsImV4cCI6MTY1MDE0MjI1N30.55EcFoIWAuWrMvSqFFbvjvAeXrGqfn9Z7actorgZsN0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tourName\": \"Passeio Y\",\r\n    \"communityName\": \"Comunidade Y\",\r\n    \"description\": \"Exposição da cultura artesanal\",\r\n    \"accommodation\": \"Casa de Joana\",\r\n    \"activities\": \"Preparar vasos artesanais\",\r\n    \"travelDate\": \"15/06 até 18/06\",\r\n    \"hint\": \"Leve o protetor solar e repelente\",\r\n    \"price\": 165,\r\n    \"vacancies\": 12,\r\n    \"photo1\": \"link da foto do local\",\r\n    \"photo2\": \"link da foto 2 do local\",\r\n    \"photo3\": \"link da foto 3 do local\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/tours/07520cee-d78d-424c-ae00-9861d4c570ec",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"tours",
+										"07520cee-d78d-424c-ae00-9861d4c570ec"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteTour",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3M2E3NzU5My01MGE3LTQyODEtODM0MS1iNTAyNjkwMTU5ZWEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAwNTU4NTcsImV4cCI6MTY1MDE0MjI1N30.55EcFoIWAuWrMvSqFFbvjvAeXrGqfn9Z7actorgZsN0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/tours/07520cee-d78d-424c-ae00-9861d4c570ec",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"tours",
+										"07520cee-d78d-424c-ae00-9861d4c570ec"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "SeeAllOrders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZjVkMGY2NC1hN2E4LTQyYWEtOWFhYy0zOTUzNDJlOTc2MzgiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAxNTYwMDUsImV4cCI6MTY1MDI0MjQwNX0.CY04D5gwN6qa6blgXOmfor3wUfddGHKJeFcikHDk0Mo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/orders",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjJjZDU3My02N2I1LTQ3ZGEtYjFiOS0wMzA2OTRmY2NmMjQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDA1MzUxMSwiZXhwIjoxNjUwMTM5OTExfQ.EZvphjtGuSYQcT_eoxtnbxCcouiV7McuaVobfaEc_jE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/orders/44d528ec-754d-49cf-90eb-29d6451f9e51",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"orders",
+										"44d528ec-754d-49cf-90eb-29d6451f9e51"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1N2Y0ZDQ1YS0zMGQyLTRlMTctYmM2MC0zYmFlNDIzNWNlNjIiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDIxMzU0OSwiZXhwIjoxNjUwMjk5OTQ5fQ.JnhtzXP1IJynkQsR0rUJco0ptURCKAth8yOMP78BxfM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amountPeople\": 2,\r\n    \"tour\": \"8f98da35-1103-491c-9f6e-55bcec9f66e9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/orders",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjJjZDU3My02N2I1LTQ3ZGEtYjFiOS0wMzA2OTRmY2NmMjQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDA1MzUxMSwiZXhwIjoxNjUwMTM5OTExfQ.EZvphjtGuSYQcT_eoxtnbxCcouiV7McuaVobfaEc_jE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amountPeople\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/orders/44d528ec-754d-49cf-90eb-29d6451f9e51",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"orders",
+										"44d528ec-754d-49cf-90eb-29d6451f9e51"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1N2Y0ZDQ1YS0zMGQyLTRlMTctYmM2MC0zYmFlNDIzNWNlNjIiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDIxMzU0OSwiZXhwIjoxNjUwMjk5OTQ5fQ.JnhtzXP1IJynkQsR0rUJco0ptURCKAth8yOMP78BxfM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/orders/d5351e39-4d36-4e7d-9ef8-4d9a92e6f1d0",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"orders",
+										"d5351e39-4d36-4e7d-9ef8-4d9a92e6f1d0"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Stories",
+					"item": [
+						{
+							"name": "SeeAllStories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/stories",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"stories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneStory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/stories/39129f61-cda8-4d55-94fa-b3485f3fa287",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"stories",
+										"39129f61-cda8-4d55-94fa-b3485f3fa287"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateStory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZjVkMGY2NC1hN2E4LTQyYWEtOWFhYy0zOTUzNDJlOTc2MzgiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAxNDc2NzIsImV4cCI6MTY1MDIzNDA3Mn0.7MOalx1vq4tNUCovhM2njHER0hoL89Tj_Ddl2Et24xc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"communityName\": \"Comunidade X\",\r\n    \"description\": \"Eles gostam de produzir objetos que representam a história local\",\r\n    \"localization\": \"Ceará\",\r\n    \"mainActivities\": \"Fazer vasos e pratos típicos da região\",\r\n    \"curiosities\": \"Produzem o melhor doce do Brasil\",\r\n    \"photo1\": \"link da foto da comunidade\",\r\n    \"photo2\": \"link da foto 2 da comunidade\",\r\n    \"tour\": \"8f98da35-1103-491c-9f6e-55bcec9f66e9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/stories",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"stories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateStory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3M2E3NzU5My01MGE3LTQyODEtODM0MS1iNTAyNjkwMTU5ZWEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAwNTU4NTcsImV4cCI6MTY1MDE0MjI1N30.55EcFoIWAuWrMvSqFFbvjvAeXrGqfn9Z7actorgZsN0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"communityName\": \"Comunidade Y\",\r\n    \"description\": \"Eles gostam de produzir objetos que representam a história da reigão Nordeste\",\r\n    \"localization\": \"Sergipe\",\r\n    \"mainActivities\": \"Fazer vasos e pratos típicos da região\",\r\n    \"curiosities\": \"Produzem o melhor doce do Nordeste\",\r\n    \"photo1\": \"link foto da comunidade\",\r\n    \"photo2\": \"link foto 2 da comunidade\",\r\n    \"tour\": \"d461c896-cddc-4b22-98db-34b0e1a4fc6f\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/stories/382d7953-8f59-4e10-9685-00ea441cc449",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"stories",
+										"382d7953-8f59-4e10-9685-00ea441cc449"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteStory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3M2E3NzU5My01MGE3LTQyODEtODM0MS1iNTAyNjkwMTU5ZWEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAwNTU4NTcsImV4cCI6MTY1MDE0MjI1N30.55EcFoIWAuWrMvSqFFbvjvAeXrGqfn9Z7actorgZsN0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/stories/382d7953-8f59-4e10-9685-00ea441cc449",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"stories",
+										"382d7953-8f59-4e10-9685-00ea441cc449"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payments",
+					"item": [
+						{
+							"name": "SeeAllPayments",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MGI4OWQ4Ni05OTlhLTQ2ODQtYmJiNC0xNjA3MjZiODRlNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAyMTMyODIsImV4cCI6MTY1MDI5OTY4Mn0.Q9r8mAsZ9_3ENpMtQ9DXrwe7LW2jDEvKSvmX2MVh0oU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/payments",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOnePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjJjZDU3My02N2I1LTQ3ZGEtYjFiOS0wMzA2OTRmY2NmMjQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDA1MzUxMSwiZXhwIjoxNjUwMTM5OTExfQ.EZvphjtGuSYQcT_eoxtnbxCcouiV7McuaVobfaEc_jE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/payments/3c01400b-a1ba-4fde-8d4f-73848a20558b",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"payments",
+										"3c01400b-a1ba-4fde-8d4f-73848a20558b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreatePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDVmYThjNy0xZDZmLTRjZDMtYTZjOS0zZTg1YTQyOTZjMzciLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM4NjkyMiwiZXhwIjoxNjUwNDczMzIyfQ.20T4gwOAOKabd_fHraY8mq1oMK4MPyOjwae_p3k4u9M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"credit_card\",\r\n    \"installments\": 4,\r\n    \"cardNumber\": \"5032 9334 1234 1234\",\r\n    \"printedName\": \"LUCAS B\",\r\n    \"dueDate\": \"12/25\",\r\n    \"securityCode\": \"111\",\r\n    \"order\": \"a3f97b86-bab2-42dd-9219-a8000912f3d7\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/payments",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdatePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDVmYThjNy0xZDZmLTRjZDMtYTZjOS0zZTg1YTQyOTZjMzciLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM4NjkyMiwiZXhwIjoxNjUwNDczMzIyfQ.20T4gwOAOKabd_fHraY8mq1oMK4MPyOjwae_p3k4u9M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"cash\",\r\n    \"installments\": 5,\r\n    \"cardNumber\": \"5032 9334 1234 1234\",\r\n    \"printedName\": \"LUCAS SANTOS\",\r\n    \"dueDate\": \"05/26\",\r\n    \"securityCode\": \"111\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/payments/ffd28d25-3716-463d-b8a7-5127dee2dacc",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"payments",
+										"ffd28d25-3716-463d-b8a7-5127dee2dacc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletePayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjJjZDU3My02N2I1LTQ3ZGEtYjFiOS0wMzA2OTRmY2NmMjQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDA1MzUxMSwiZXhwIjoxNjUwMTM5OTExfQ.EZvphjtGuSYQcT_eoxtnbxCcouiV7McuaVobfaEc_jE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/payments/3c01400b-a1ba-4fde-8d4f-73848a20558b",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"payments",
+										"3c01400b-a1ba-4fde-8d4f-73848a20558b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Checkouts",
+					"item": [
+						{
+							"name": "SeeAllCheckouts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MGI4OWQ4Ni05OTlhLTQ2ODQtYmJiNC0xNjA3MjZiODRlNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTAyMTMyODIsImV4cCI6MTY1MDI5OTY4Mn0.Q9r8mAsZ9_3ENpMtQ9DXrwe7LW2jDEvKSvmX2MVh0oU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/checkouts",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"checkouts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YTI2NzZhYS1lZDcxLTQwNjktYjUwOC1iMDNjNWFlNDAzYWYiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDIxMTYwMCwiZXhwIjoxNjUwMjk4MDAwfQ.eh4_AdXCouQW14WY91i_90X6p2OUMd9sEDQGWRYK_24",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/checkouts/06d27e48-42bb-4e16-bff3-01213371e7c0",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"checkouts",
+										"06d27e48-42bb-4e16-bff3-01213371e7c0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YTk5ODcwMi0wOTdlLTRhOGEtYWVhNi04NGNiZjAzZTQxMTkiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDE0NjYyNCwiZXhwIjoxNjUwMjMzMDI0fQ.jdlp2KNpgF3dp1QRAtEZ3pG_Yu3Bu7dc4tr5Q9xXoVI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Gio\",\r\n    \"lastName\": \"Gomes\",\r\n    \"email\": \"gio@hotmail.com\",\r\n    \"birthDate\": \"1992-04-08\",\r\n    \"cpf\": \"01982757529\",\r\n    \"order\": \"b6083e13-0fff-423d-8bce-a0d36b155727\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/checkouts",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"checkouts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjJjZDU3My02N2I1LTQ3ZGEtYjFiOS0wMzA2OTRmY2NmMjQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDA1MzUxMSwiZXhwIjoxNjUwMTM5OTExfQ.EZvphjtGuSYQcT_eoxtnbxCcouiV7McuaVobfaEc_jE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Jose\",\r\n    \"lastName\": \"Santos\",\r\n    \"email\": \"jose@hotmail.com\",\r\n    \"birthDate\": \"1987-04-08\",\r\n    \"cpf\": \"01253256929\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/checkouts/9cc9eba8-ca6e-482e-b16c-63b577d2c6f3",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"checkouts",
+										"9cc9eba8-ca6e-482e-b16c-63b577d2c6f3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteCheckout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjJjZDU3My02N2I1LTQ3ZGEtYjFiOS0wMzA2OTRmY2NmMjQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDA1MzUxMSwiZXhwIjoxNjUwMTM5OTExfQ.EZvphjtGuSYQcT_eoxtnbxCcouiV7McuaVobfaEc_jE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/checkouts/9cc9eba8-ca6e-482e-b16c-63b577d2c6f3",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"checkouts",
+										"9cc9eba8-ca6e-482e-b16c-63b577d2c6f3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Diares",
+					"item": [
+						{
+							"name": "SeeAllDiares",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/diares",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"diares"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneDiary",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/diares/48af355d-2200-48dc-8232-ba96179ed691",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"diares",
+										"48af355d-2200-48dc-8232-ba96179ed691"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateDiary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDVmYThjNy0xZDZmLTRjZDMtYTZjOS0zZTg1YTQyOTZjMzciLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM4NjkyMiwiZXhwIjoxNjUwNDczMzIyfQ.20T4gwOAOKabd_fHraY8mq1oMK4MPyOjwae_p3k4u9M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Fantástico!\",\r\n    \"content\": \"Viajei com minha família e fiquei admirado com a cultura da comunidade local\",\r\n    \"photo\": \"link da foto\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/diares",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"diares"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateDiary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZmQ1ZjdjYi1lOWJiLTRiNDktYWU2YS03YjNhN2FmYzM4YzQiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDMyNTkxOCwiZXhwIjoxNjUwNDEyMzE4fQ.MIyeLa8u5jRM4lLYgQNYUuDPXJVDbUl5W7JrO6V2WHk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Estou encantado!\",\r\n    \"content\": \"Agora eu só quero fazer turismo de base comunitária. Nada se compara com essa experiência. Fenomenal!\",\r\n    \"photo\": \"link da foto\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/diares/f05937c5-d90f-4a6f-89e3-fa9550e25b8b",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"diares",
+										"f05937c5-d90f-4a6f-89e3-fa9550e25b8b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteDiary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDVmYThjNy0xZDZmLTRjZDMtYTZjOS0zZTg1YTQyOTZjMzciLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM4NjkyMiwiZXhwIjoxNjUwNDczMzIyfQ.20T4gwOAOKabd_fHraY8mq1oMK4MPyOjwae_p3k4u9M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/diares/f3a29e94-7e52-4245-885c-efcea3be7e78",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"diares",
+										"f3a29e94-7e52-4245-885c-efcea3be7e78"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Comments",
+					"item": [
+						{
+							"name": "SeeAllComments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/comments",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SeeOneComment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/comments/16543c8c-d426-4044-a8c2-b88bdae0b0c0",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments",
+										"16543c8c-d426-4044-a8c2-b88bdae0b0c0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDVmYThjNy0xZDZmLTRjZDMtYTZjOS0zZTg1YTQyOTZjMzciLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDM4NjkyMiwiZXhwIjoxNjUwNDczMzIyfQ.20T4gwOAOKabd_fHraY8mq1oMK4MPyOjwae_p3k4u9M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Amei o seu relato! Irei conhecer Mato Serrado na minha próxima viagem.\",\r\n    \"diary\": \"c7174b08-da98-46d9-ba4b-4b4f863590dd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/comments",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTgxYzlmYS1hNjM5LTRlYWQtODUyNy1kOWI3ZjBiMTlmMjUiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDMyOTg4MywiZXhwIjoxNjUwNDE2MjgzfQ.IRyIaIS__6jR2YWv_wWt2Vav6IC9-UaHnBrRBwSV4vk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Show demais, fiquei na vontade de fazer essa viagem também\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/comments/9769213e-4a8b-444e-aaad-c64e70338260",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments",
+										"9769213e-4a8b-444e-aaad-c64e70338260"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteComment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTgxYzlmYS1hNjM5LTRlYWQtODUyNy1kOWI3ZjBiMTlmMjUiLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY1MDMyOTg4MywiZXhwIjoxNjUwNDE2MjgzfQ.IRyIaIS__6jR2YWv_wWt2Vav6IC9-UaHnBrRBwSV4vk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://cobe-backend.herokuapp.com/api/comments/9769213e-4a8b-444e-aaad-c64e70338260",
+									"protocol": "https",
+									"host": [
+										"cobe-backend",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments",
+										"9769213e-4a8b-444e-aaad-c64e70338260"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
