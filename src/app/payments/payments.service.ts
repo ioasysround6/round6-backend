@@ -53,19 +53,9 @@ export class PaymentsService {
         .where(conditions)
         .getOne();
 
-      if (
-        payment.installments === null ||
-        payment.cardNumber === null ||
-        payment.printedName === null ||
-        payment.dueDate === null ||
-        payment.securityCode === null
-      ) {
+      if (payment.installments === null) {
         (payment.installments = undefined),
-          (payment.installmentValue = undefined),
-          (payment.cardNumber = undefined),
-          (payment.printedName = undefined),
-          (payment.dueDate = undefined),
-          (payment.securityCode = undefined);
+          (payment.installmentValue = undefined);
       }
       return payment;
     } catch (error) {
