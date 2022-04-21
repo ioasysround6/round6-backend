@@ -47,7 +47,7 @@ export class PaymentsController {
     return await this.paymentService.createPayment(body);
   }
 
-  @Roles(Role.Tourist)
+  @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
@@ -58,7 +58,7 @@ export class PaymentsController {
     return await this.paymentService.updatePayment({ id }, body);
   }
 
-  @Roles(Role.Tourist)
+  @Roles(Role.Admin, Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)

@@ -36,7 +36,7 @@ export class DiaresController {
     return await this.diaryService.seeOneDiary({ id });
   }
 
-  @Roles(Role.Admin, Role.Tourist)
+  @Roles(Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)

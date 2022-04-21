@@ -36,7 +36,7 @@ export class CommentsController {
     return await this.commentService.seeOneComment({ id });
   }
 
-  @Roles(Role.Admin, Role.Tourist)
+  @Roles(Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)

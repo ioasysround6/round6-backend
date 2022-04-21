@@ -32,14 +32,14 @@ export class CheckoutsController {
     return await this.checkoutService.seeAllCheckouts();
   }
 
-  @Roles(Role.Admin, Role.Tourist)
+  @Roles(Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
   async seeOneCheckout(@Param('id', new ParseUUIDPipe()) id: string) {
     return await this.checkoutService.seeOneCheckout({ id });
   }
 
-  @Roles(Role.Admin, Role.Tourist)
+  @Roles(Role.Tourist)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)
