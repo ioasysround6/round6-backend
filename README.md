@@ -1,7 +1,7 @@
 # Projeto Cobé
 
 Cobé é um projeto desenvolvido, pelo grupo !Round6, para operar como uma agência de turismo de base comunitária. Neste repositório, 
-consta o código da trilha back-end, realizado pelo camper Lucas Alves. O projeto faz parte da 3ª fase (Desafio Final) da 4ª edição do ioasys Camp 2022.
+consta o código da trilha back-end, realizado pelo camper Lucas Alves. O projeto faz parte do Desafio Final da 4ª edição do ioasys Camp 2022.
 
 ## Tecnologias Utilizadas
 
