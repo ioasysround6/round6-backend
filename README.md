@@ -15,14 +15,14 @@ consta o código da trilha back-end, realizado pelo camper Lucas Alves. O projet
 A API foi criada para ser consumida pelas demais trilhas do grupo (front-end, react native e android), com o intuito de desenvolver uma 
 solução para um dos 17 Objetivos de Desenvolvimento Sustentável (ODS) da Organização das Nações Unidas (ONU). No caso do projeto Cobé, o 
 objetivo é atuar na ODS 1 (Erradicação da Pobreza). Por conta disso, foi desenvolvido uma agência de turismo de base comunitária para 
-aproximar os turistas de pessoas em condições de pobreza, mais especificamente as comunidades de artesãos da região Norte e Nordeste. Além 
-de se cadastrarem no site e no aplicativo, os turistas teriam a possibilidade de realizar a compra dos passeios, de ler as histórias dessas 
-comunidades, de compartilhar suas experiências dentro do diário de viagem e de interagir com outros usuários através dos comentários nas
-postagens.  
+aproximar os turistas das pessoas em condições de pobreza, mais especificamente as comunidades de artesãos da região Norte e Nordeste. 
+Além de se cadastrarem no site e no aplicativo, os turistas teriam a possibilidade de realizar a compra dos passeios, de ler as 
+histórias dessas comunidades, de compartilhar suas experiências dentro do diário de viagem e de interagir com outros usuários através 
+dos comentários nas postagens.  
 
 ## Variáveis de Ambiente
 
-Por questões de segurança e peformance, foram definidas algumas variáveis de ambiente:
+Por questões de segurança e performance, foram definidas algumas variáveis de ambiente:
 
 ```bash
 # JWT token secret para autenticação
@@ -144,8 +144,8 @@ $ npm install
 ## Migrações na máquina local
 
 Agora, gere as migrations, contendo as tabelas (users, tours, orders, stories, payments, checkouts, tokens, diares e comments), 
-os seeds (admin, turistas, passeios turísticos e histórias das comunidades) e a trigger (controle das vagas disponíveis 
-no passeio turístico). Portanto, utilize o comando abaixo:
+os seeds (admin, turistas, passeios turísticos, histórias das comunidades e diários de viagens) e a trigger (controle das vagas 
+disponíveis no passeio turístico). Portanto, utilize o comando abaixo:
 
 ```bash
 $ npm run typeorm migration:run
@@ -174,24 +174,24 @@ Heroku. Portanto, instale a plataforma através do comando:
 $ npm install -g heroku
 ```
 
-Após isso, crie uma conta e siga os seguintes passos: new > create new app > create app (escolha o nome do app e deixe a região 
-como Estados Unidos).
+Após isso, crie uma conta no site https://www.heroku.com/ e siga os seguintes passos: new > create new app > create app (escolha 
+o nome do app e deixe a região como Estados Unidos).
 
 Como será utilizado o banco de dados da plataforma, vá em Resources, digite Heroku Postgres e confirme o plano Hobby Dev - Free. Em
 seguida, confira as credenciais do banco de dados seguindo o caminho: Data (no menu do canto superior direito) > clique no app 
 criado > Settings > View Credentials. Com os dados em mãos, abra o pgAdmin4, crie um novo server, adicione o nome do server e, na 
-aba Connection, preencha os dados com as credenciais do Heroku Postgres. Exemplo:
+aba Connection, preencha os dados abaixo com as credenciais do Heroku Postgres.
 
 ```bash
-Host= ec2-3-229-161-70.compute-1.amazonaws.com
-Port= 5432
-Maintenance Database= dc507dcaovoavj
-Username= boibfxvbxrxlnz
-Password= fd914b7a99539d9b7f714213ce0917c2b4db955cb784985ca45e0c439dcbc18d
+Host= 
+Port=
+Maintenance Database=
+Username=
+Password=
 ```
 
-Após esse processo, salve a senha e vá para a aba Advanced. Na coluna DB Restriction, adicione o Maintenance Database (dc507dcaovoavj)
-para informar qual a base de dados que vai ser administrada. Pronto, configuração concluída no pgAdmin4!
+Após esse processo, salve a senha e vá para a aba Advanced. Na coluna DB Restriction, adicione o conteúdo de Maintenance Database
+para informar qual a base de dados que vai ser administrada. Configuração concluída no pgAdmin4!
 
 De volta para o Heroku, siga para a aba Settings, clique em Reveal Config Vars e adicione todas as variáveis de ambiente mencionadas 
 anteriormente. Além disso, vá em buildpacks e adicione o heroku/nodejs. Agora, clique na aba Deploy e escolha o método para subir a aplicação.
@@ -237,17 +237,18 @@ Caso queira fazer consultas no banco de dados do Heroku Postgres, coloque o coma
 $ heroku pg:psql --app cobe-backend
 ```
 
-Obs.: para sair do heroku run bash e do heroku pg:psql, basta digitar 'exit'.
+Obs.: para sair do heroku run bash ou do heroku pg:psql, basta digitar 'exit'.
 
-Pronto! Todos os endpoints da API estão documentados no arquivo 'cobe.postaman_collection.json', que consta 
-na raiz do projeto. Após concluir a documentação, esta foi repassada aos demais desenvolvedores para que 
-pudessem fazer a integração do front-end, react native e android com o back-end.
+Pronto! O link gerado, de acordo com o nome escolhido, foi https://cobe-backend.herokuapp.com/. Todos os 
+endpoints da API estão documentados no arquivo 'cobe.postaman_collection.json', que consta na raiz do 
+projeto. Após concluir a documentação, esta foi repassada aos demais desenvolvedores para que pudessem 
+fazer a integração do front-end, react native e android com o back-end.
 
 ## Kaffeine
 
 Para que a API não demore muitos segundos para responder uma requisição toda vez ao ficar um certo tempo 
-estagnada, tornou-se necessário adicioná-la no site https://kaffeine.herokuapp.com, que pinga o link do 
-heroku a cada 30 minutos, não deixando a API ficar lenta nas respostas. O único requisito para isso foi 
+estagnada, tornou-se necessário adicioná-la no site https://kaffeine.herokuapp.com, que pinga o link gerado 
+do Heroku a cada 30 minutos, não deixando a API ficar lenta nas respostas. O único requisito para isso foi 
 definir um horário para dormir. No caso do projeto Cobé, foi estabelecido o horário das 2 às 8 horas da 
 manhã, cumprindo o prazo de 6 horas, estabelecido pelo Heroku para as aplicações gratuitas.
 
@@ -259,8 +260,8 @@ Importante destacar de qual forma foi diagramado o banco de dados para entender 
 
 Algumas considerações: em relação ao usuário, ele pode ter vários pedidos, diários e comentários. Quanto aos pedidos, 
 pode ter apenas um pagamento, mas vários checkouts. Já os passeios turísticos, pode ter somente uma história de 
-comunidade relacionada, mas ter muitos pedidos de compra. Por fim, cada diário pertence a um único usuário, mas pode 
-ter muitos comentários. 
+comunidade relacionada, mas estar contido em muitos pedidos de compra. Por fim, cada diário pertence a um único usuário, 
+mas pode ter muitos comentários. 
 
 A tabela de tokens foi criada porque a API está suportando a implementação de refresh token. Logo, a coluna hash
 armazena o último token gerado para determinado usuário. Isso quer dizer que para gerar um novo token, há uma
