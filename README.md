@@ -22,82 +22,108 @@ postagens.
 
 ## Variáveis de Ambiente
 
-Por questões de segurança, foram definidas algumas variáveis de ambiente:
+Por questões de segurança e peformance, foram definidas algumas variáveis de ambiente:
 
 ```bash
 # JWT token secret para autenticação
-JWT_SECRET_KEY=       =>   (LOCAL e HEROKU) EX.: cqf0a97Et+pp7qWIVJbOIWrSUo6DdUbkXjxV6ZWH3To=
-JWT_EXPIRATION=       =>   (LOCAL e HEROKU) EX.: 86400s
+JWT_SECRET_KEY=
+JWT_EXPIRATION=
 
-# Número de segundos que cada solicitação durará no armazenamento
-THROTTLER_TTL=        =>   (LOCAL e HEROKU) EX.: 60
+# Número (inteiro) de segundos que cada solicitação durará no armazenamento
+THROTTLER_TTL=
 
-# Número máximo de solicitações dentro do limite TTL
-THROTTLER_LIMIT=      =>   (LOCAL e HEROKU) EX.: 10
+# Número (inteiro) máximo de solicitações dentro do limite TTL
+THROTTLER_LIMIT=
 
-# Conexão com o banco de dados
-DB_CONNECTION=        =>   (LOCAL e HEROKU) EX.: postgres
+# O tipo de banco de dados que está conectado (postgres, mongoDB, mySQL, etc)
+DB_CONNECTION=        
 
-DATABASE_URL=         =>   (LOCAL) EX.: postgres://postgres:postgres@localhost:5432/backend
-                      =>   (HEROKU) EX.: postgres://boibfxvbxrxlnz:fd914b7a99539d9b7f714213ce0917c2b4db955cb784985ca45e0c439dcbc18d@ec2-3-229-161-70.compute-1.amazonaws.com:5432/dc507dcaovoavj  
+# URL do banco de dados
+DATABASE_URL=
 
 # Caminho que será lido ao rodar as entities e as migrations na máquina local e no Heroku
+ENTITIES=
+MIGRATIONS=
+
+# Ambiente que a aplicação está rodando para utilizar ou não a propriedade ssl
+NODE_ENV=
+
+# Informações para o seed do admin
+ADMIN_FIRST_NAME=      
+ADMIN_LAST_NAME=               
+ADMIN_EMAIL=            
+ADMIN_PASSWORD=   
+ADMIN_BIRTH_DATE=
+ADMIN_PHOTO=
+
+# Informações para o seed do primeiro turista 
+TOURIST1_ID=
+TOURIST1_FIRST_NAME= 
+TOURIST1_LAST_NAME=
+TOURIST1_EMAIL= 
+TOURIST1_PASSWORD=
+TOURIST1_BIRTH_DATE= 
+TOURIST1_PHOTO=
+
+# Informações para o seed do segundo turista 
+TOURIST2_ID=
+TOURIST2_FIRST_NAME=
+TOURIST2_LAST_NAME=
+TOURIST2_EMAIL=
+TOURIST2_PASSWORD=
+TOURIST2_BIRTH_DATE=
+TOURIST2_PHOTO=
+
+# Informações para o seed do terceiro turista 
+TOURIST3_ID=
+TOURIST3_FIRST_NAME=
+TOURIST3_LAST_NAME=
+TOURIST3_EMAIL=
+TOURIST3_PASSWORD=
+TOURIST3_BIRTH_DATE=
+TOURIST3_PHOTO=
+
+# Informações para adicionar o id e rodar os seeds de tours (foramto UUID)
+ID_TOUR_ONE=
+ID_TOUR_TWO=
+ID_TOUR_THREE=
+
+# Criptografia AES (biblioteca typeorm-encrypted)
+AES_KEY=
+AES_ALGORITHM=
+AES_IV_LENGTH=
+AES_IV=
+``` 
+
+Algumas variáveis de ambiente merecem um comentário adicional.
+
+O JWT_SECRET_KEY pode ser gerado pelo openssl, através do comando:
+
+```bash
+$ openssl rand -base64 32
+```
+
+E o JWT_EXPIRATION deve ser anotado com um 's' de segundos após o tempo determinado. Exemplo: 480s.
+
+ENTITIES, MIGRATIONS e NODE_ENV foram definidas como variáveis de ambiente porque o conteúdo delas funciona de 
+diferente forma quando roda na máquina local e no Heroku. A ideia foi evitar conflitos e conseguir rodar das 
+duas formas. Abaixo segue o exemplo de como está listado no projeto.
+
+```bash
 ENTITIES=             =>    (LOCAL) EX.: src/app/**/*.entity.ts
                       =>    (HEROKU) EX.: dist/app/**/*.entity.js
 
 MIGRATIONS=           =>    (LOCAL) EX.: src/config/typeorm/migrations/*.ts
                       =>    (HEROKU) EX.: dist/config/typeorm/migrations/*.js
 
-# Ambiente que a aplicação está rodando para utilizar ou não a propriedade ssl
 NODE_ENV=             =>    (LOCAL) EX.: development
                       =>    (HEROKU) EX.: production
+```
 
-# Informações para o seed do admin
-ADMIN_FIRST_NAME=     =>    (LOCAL e HEROKU) EX.: Grace          
-ADMIN_LAST_NAME=      =>    (LOCAL e HEROKU) EX.: Hopper                
-ADMIN_EMAIL=          =>    (LOCAL e HEROKU) EX.: grace@hotmail.com               
-ADMIN_PASSWORD=       =>    (LOCAL e HEROKU) EX.: Grace@123    
-ADMIN_BIRTH_DATE=     =>    (LOCAL e HEROKU) EX.: 1906-12-09    
-ADMIN_PHOTO=          =>    (LOCAL e HEROKU) EX.: https://i.imgur.com/DSYfMyu.jpg 
+Por fim, em relação aos seeds dos usuários, o id está no formato UUID, a data de nascimento está no formato 
+aaaa-mm-dd e a foto está armazenando a imagem hospedada em algum outro servidor (ex.: imgur).
 
-# Informações para o seed do primeiro turista 
-TOURIST1_ID=          =>    (LOCAL e HEROKU) EX.: f89e3a60-8e5a-445f-bcdd-ea2fec5ac1a9
-TOURIST1_FIRST_NAME=  =>    (LOCAL e HEROKU) EX.: Felipe  
-TOURIST1_LAST_NAME=   =>    (LOCAL e HEROKU) EX.: dos Santos  
-TOURIST1_EMAIL=       =>    (LOCAL e HEROKU) EX.: felipe@hotmail.com  
-TOURIST1_PASSWORD=    =>    (LOCAL e HEROKU) EX.: Felipe@123  
-TOURIST1_BIRTH_DATE=  =>    (LOCAL e HEROKU) EX.: 1994-06-08  
-TOURIST1_PHOTO=       =>    (LOCAL e HEROKU) EX.: https://i.imgur.com/IrT6ay3.png 
-
-# Informações para o seed do segundo turista 
-TOURIST2_ID=          =>    (LOCAL e HEROKU) EX.: b513343b-7974-4016-8c9a-c4a54a9850f1
-TOURIST2_FIRST_NAME=  =>    (LOCAL e HEROKU) EX.: Paula
-TOURIST2_LAST_NAME=   =>    (LOCAL e HEROKU) EX.: Silveira
-TOURIST2_EMAIL=       =>    (LOCAL e HEROKU) EX.: paula@hotmail.com
-TOURIST2_PASSWORD=    =>    (LOCAL e HEROKU) EX.: Paula@123
-TOURIST2_BIRTH_DATE=  =>    (LOCAL e HEROKU) EX.: 1992-10-28
-TOURIST2_PHOTO=       =>    (LOCAL e HEROKU) EX.: https://i.imgur.com/ck9gtDd.png
-
-# Informações para o seed do terceiro turista 
-TOURIST3_ID=          =>    (LOCAL e HEROKU) EX.: 0b4bca0b-f60a-4c26-8583-701398866c48
-TOURIST3_FIRST_NAME=  =>    (LOCAL e HEROKU) EX.: João
-TOURIST3_LAST_NAME=   =>    (LOCAL e HEROKU) EX.: Carlos Silva
-TOURIST3_EMAIL=       =>    (LOCAL e HEROKU) EX.: carlos@hotmail.com
-TOURIST3_PASSWORD=    =>    (LOCAL e HEROKU) EX.: Carlos@123
-TOURIST3_BIRTH_DATE=  =>    (LOCAL e HEROKU) EX.: 1995-10-28
-TOURIST3_PHOTO=       =>    (LOCAL e HEROKU) EX.: https://i.imgur.com/EW3UpHs.png
-
-# Informações para adicionar o id e rodar os seeds de tours
-ID_TOUR_ONE=          =>    (LOCAL e HEROKU) EX.: aaf8a761-b6f0-40b2-8227-21c8f3a521b7
-ID_TOUR_TWO=          =>    (LOCAL e HEROKU) EX.: 38c477a6-fa63-45a1-8b29-a625f24db881
-ID_TOUR_THREE=        =>    (LOCAL e HEROKU) EX.: 8f98da35-1103-491c-9f6e-55bcec9f66e9
-
-# Criptografia AES (biblioteca typeorm-encrypted)
-AES_KEY=              =>    (LOCAL e HEROKU) EX.: e41c966f21f9e1577802463f8924e6a3fe3e9751f201304213b2f845d8841d61
-AES_ALGORITHM=        =>    (LOCAL e HEROKU) EX.: aes-256-cbc
-AES_IV_LENGTH=        =>    (LOCAL e HEROKU) EX.: 16
-AES_IV=               =>    (LOCAL e HEROKU) EX.: ff5ac19190424b1d88f9419ef949ae56
-``` 
+Obs.: preencher a propriedade de foto é opcional.
 
 ## Clonando o repositório
 
