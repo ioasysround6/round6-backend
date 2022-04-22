@@ -237,12 +237,17 @@ Caso queira fazer consultas no banco de dados do Heroku Postgres, coloque o coma
 $ heroku pg:psql --app cobe-backend
 ```
 
-Obs.: para sair do heroku run bash ou do heroku pg:psql, basta digitar 'exit'.
+Obs.1: para sair do heroku run bash ou do heroku pg:psql, basta digitar 'exit'.
 
 Pronto! O link gerado, de acordo com o nome escolhido, foi https://cobe-backend.herokuapp.com/. Todos os 
 endpoints da API estão documentados no arquivo 'cobe.postaman_collection.json', que consta na raiz do 
 projeto. Após concluir a documentação, esta foi repassada aos demais desenvolvedores para que pudessem 
 fazer a integração do front-end, react native e android com o back-end.
+
+Obs.2: em um projeto real, a conta do admin não seria informada pelo Readme (por questões de segurança), 
+mas como é um projeto a ser avaliado, torna-se necessário para acessar determinadas rotas. Portanto, foi
+deixado na collection do postman, no endpoint de login da pasta herokuapp.com, o email e a senha da Grace, 
+que é a admin da aplicação deployada.
 
 ## Kaffeine
 
@@ -352,6 +357,7 @@ terminal e no arquivo 'application.log' da pasta 'logs'. Esta pasta é gerada na
 
 - Autor - [Lucas Alves](https://github.com/LucasAlvesBS)
 - linkedin - [https://www.linkedin.com/in/lucas-alves-090524225/](https://www.linkedin.com/in/lucas-alves-090524225/)
+- Email - [lucasalvesbs6@gmail.com](mailto:lucasalvesbs6@gmail.com)
 
 ## Licença
 
